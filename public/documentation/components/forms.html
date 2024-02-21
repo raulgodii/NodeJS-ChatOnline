@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+
+<head>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Chatflix &ndash; HTML Bootstrap 5 Chat Template</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <link rel="stylesheet" href="assets/css/styles-light.min.css">
+    <link rel="stylesheet" href="assets/css/styles-dark.min.css" media="(prefers-color-scheme: dark)">
+</head>
+<!-- Head -->
+<!-- Body -->
+
+<body>
+    <!-- Layout -->
+    <div class="bg-light">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light border-bottom fw-bold bg-white" style="z-index: 3">
+            <div class="container-fluid">
+                <a class="logo m-3" href="documentation/index.html">
+                    <img src="./assets/img/logo.png" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDoc" aria-controls="navbarDoc" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarDoc">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="documentation/index.html">Introduction</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="documentation/components/accordion.html">Components</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="documentation/changelog.html">Changelog</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Navigation -->
+
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-auto bg-white border-end hide-scrollbar" style="z-index: 2;position: fixed;top: 79px;height: calc(100% - 79px);overflow: auto;">
+                    <div class="p-5">
+                        <h5 class="me-20 mb-4 text-uppercase ls-1 fs-7">Getting started</h5>
+                        <ul class="list-unstyled mb-6">
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/index.html">Introduction</a>
+                            </li>
+                            <li class="list-item d-flex align-items-center justify-content-between ">
+                                <a class="text-muted" href="documentation/changelog.html">Changelog</a>
+                                <span class="badge bg-success ms-2">1.0</span>
+                            </li>
+                        </ul>
+                        <h5 class="mb-4 text-uppercase ls-1 fs-7">Components</h5>
+                        <ul class="list-unstyled mb-6">
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/accordion.html">Accordion</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/avatars.html">Avatars</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/badges.html">Badges</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/buttons.html">Buttons</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/contacts.html">Contacts</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/forms.html">Forms</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/messages.html">Messages</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/navs.html">Navs</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/separator.html">Separator</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/type-indicator.html">Type indicator</a>
+                            </li>
+                        </ul>
+                        <h5 class="mb-4 text-uppercase ls-1 fs-7">Utilities</h5>
+                        <ul class="list-unstyled mb-6">
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/helpers.html">Helpers</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/utilities.html">Utilities</a>
+                            </li>
+                        </ul>
+                        <h5 class="mb-4 text-uppercase ls-1 fs-7">Plugins</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/plugins/magnific-popup.html">Magnific popup</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Sidebar -->
+
+                <!-- Content -->
+                <div class="col-auto bg-light" style="position: fixed;left: 252px;right: 0px;top: 79px;height: calc(100% - 79px);overflow: auto;">
+                    <div class="p-8">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card p-8">
+                                        <div class="card-body">
+                                            <h2>Form control</h2>
+                                            <p>Use <code>.form-control-solid</code> class alongside with <code>.form-control</code> to set solid background style for a form control and <code>.form-control-transparent</code> for transparent background.</p>
+
+                                            <div class="py-4">
+                                                <div class="border rounded p-8 mb-8">
+                                                    <input type="text" class="form-control mb-3" placeholder="Default input" />
+                                                    <input type="text" class="form-control form-control-solid mb-3" placeholder="Solid input backgroud" />
+                                                    <input type="text" class="form-control form-control-transparent" placeholder="Transparent input background" />
+                                                </div>
+                                                <div class="highlight">
+                                                    <div class="highlight-code">
+                                                        <pre class="language-html">
+<code class="language-html">&lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;...&quot;/&gt;
+&lt;input type=&quot;text&quot; class=&quot;form-control form-control-solid&quot; placeholder=&quot;...&quot;/&gt;
+&lt;input type=&quot;text&quot; class=&quot;form-control form-control-transparent&quot; placeholder=&quot;...&quot;/&gt;</code>
+</pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <hr class="my-8 bg-secondary">
+                                            <h2>Form select</h2>
+                                            <p>Use <code>.form-select-solid</code> class alongside with <code>.form-select</code> to set solid background style for a form select and <code>.form-select-transparent</code> for transparent background.</p>
+
+                                            <div class="py-4">
+                                                <div class="border rounded p-8 mb-8">
+                                                    <select class="form-select mb-3" aria-label="Select example">
+                                                        <option>Default select</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+
+                                                    <select class="form-select form-select-solid mb-3" aria-label="Select example">
+                                                        <option>Solid select</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+
+                                                    <select class="form-select form-select-transparent" aria-label="Select example">
+                                                        <option>Transparent select</option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                        <option value="3">Three</option>
+                                                    </select>
+                                                </div>
+                                                <div class="highlight">
+                                                    <div class="highlight-code">
+                                                        <pre class="language-html">
+<code class="language-html">&lt;select class=&quot;form-select&quot; aria-label=&quot;Select example&quot;&gt;
+    &lt;option&gt;Select example&lt;/option&gt;
+    &lt;option value=&quot;1&quot;&gt;One&lt;/option&gt;
+    &lt;option value=&quot;2&quot;&gt;Two&lt;/option&gt;
+    &lt;option value=&quot;3&quot;&gt;Three&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;select class=&quot;form-select form-select-solid&quot; aria-label=&quot;Select example&quot;&gt;
+    &lt;option&gt;Select example&lt;/option&gt;
+    &lt;option value=&quot;1&quot;&gt;One&lt;/option&gt;
+    &lt;option value=&quot;2&quot;&gt;Two&lt;/option&gt;
+    &lt;option value=&quot;3&quot;&gt;Three&lt;/option&gt;
+&lt;/select&gt;
+
+&lt;select class=&quot;form-select form-select-transparent&quot; aria-label=&quot;Select example&quot;&gt;
+    &lt;option&gt;Select example&lt;/option&gt;
+    &lt;option value=&quot;1&quot;&gt;One&lt;/option&gt;
+    &lt;option value=&quot;2&quot;&gt;Two&lt;/option&gt;
+    &lt;option value=&quot;3&quot;&gt;Three&lt;/option&gt;
+&lt;/select&gt;</code>
+</pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <hr class="my-8 bg-secondary">
+                                            <h2>Input group solid</h2>
+                                            <p>Use <code>.input-group-solid</code> alongside with <code>.input-group</code> for solid input group background.</p>
+
+                                            <div class="py-4">
+                                                <div class="border rounded p-8 mb-8">
+                                                    <div class="input-group input-group-solid mb-3">
+                                                        <span class="input-group-text" id="basic-addon1">@</span>
+                                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                                    </div>
+                                                </div>
+                                                <div class="highlight">
+                                                    <div class="highlight-code">
+                                                        <pre class="language-html">
+<code class="language-html">&lt;div class=&quot;input-group input-group-solid mb-3&quot;&gt;
+    &lt;span class=&quot;input-group-text&quot; id=&quot;basic-addon1&quot;&gt;@&lt;/span&gt;
+    &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Username&quot; aria-label=&quot;Username&quot; aria-describedby=&quot;basic-addon1&quot;&gt;
+&lt;/div&gt;</code>
+</pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <hr class="my-8 bg-secondary">
+                                            <h2>Form check variants</h2>
+                                            <p>Use <code>.form-check-{color}</code> alongside with <code>.form-check</code> to get multiple colored backgrounds for form check.</p>
+
+                                            <div class="py-4">
+                                                <div class="border rounded p-8 mb-8">
+                                                    <div class="form-check form-check-success">
+                                                        <input checked class="form-check-input" type="checkbox" value="" id="flexCheckSuccess"/>
+                                                        <label class="form-check-label" for="flexCheckSuccess">
+                                                            Success checkbox
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-danger">
+                                                        <input checked class="form-check-input" type="checkbox" value="" id="flexCheckDanger"/>
+                                                        <label class="form-check-label" for="flexCheckDanger">
+                                                            Danger checkbox
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-warning">
+                                                        <input checked class="form-check-input" type="checkbox" value="" id="flexCheckWarning"/>
+                                                        <label class="form-check-label" for="flexCheckWarning">
+                                                            Warning checkbox
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-info">
+                                                        <input checked class="form-check-input" type="checkbox" value="" id="flexCheckInfo"/>
+                                                        <label class="form-check-label" for="flexCheckInfo">
+                                                            Info checkbox
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="highlight">
+                                                    <div class="highlight-code">
+                                                        <pre class="language-html">
+<code class="language-html">&lt;div class=&quot;form-check form-check-success&quot;&gt;
+    &lt;input checked class=&quot;form-check-input&quot; type=&quot;checkbox&quot; value=&quot;&quot; id=&quot;flexCheckSuccess&quot;/&gt;
+    &lt;label class=&quot;form-check-label&quot; for=&quot;flexCheckSuccess&quot;&gt;
+        Success checkbox
+    &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;form-check form-check-danger&quot;&gt;
+    &lt;input checked class=&quot;form-check-input&quot; type=&quot;checkbox&quot; value=&quot;&quot; id=&quot;flexCheckDanger&quot;/&gt;
+    &lt;label class=&quot;form-check-label&quot; for=&quot;flexCheckDanger&quot;&gt;
+        Danger checkbox
+    &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;form-check form-check-warning&quot;&gt;
+    &lt;input checked class=&quot;form-check-input&quot; type=&quot;checkbox&quot; value=&quot;&quot; id=&quot;flexCheckWarning&quot;/&gt;
+    &lt;label class=&quot;form-check-label&quot; for=&quot;flexCheckWarning&quot;&gt;
+        Warning checkbox
+    &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;form-check form-check-info&quot;&gt;
+    &lt;input checked class=&quot;form-check-input&quot; type=&quot;checkbox&quot; value=&quot;&quot; id=&quot;flexCheckInfo&quot;/&gt;
+    &lt;label class=&quot;form-check-label&quot; for=&quot;flexCheckInfo&quot;&gt;
+        Info checkbox
+    &lt;/label&gt;
+&lt;/div&gt;</code>
+</pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content -->
+            </div>
+        </div>
+    </div>
+    <!-- Layout -->
+    <!-- Javascript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+    <script src="assets/js/app.min.js"></script>
+    <!-- Javascript -->
+</body>
+<!-- Body -->
+
+</html>

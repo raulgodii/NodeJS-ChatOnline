@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+
+<head>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Chatflix &ndash; HTML Bootstrap 5 Chat Template</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <link rel="stylesheet" href="assets/css/styles-light.min.css">
+    <link rel="stylesheet" href="assets/css/styles-dark.min.css" media="(prefers-color-scheme: dark)">
+</head>
+<!-- Head -->
+<!-- Body -->
+
+<body>
+    <!-- Layout -->
+    <div class="bg-light">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light border-bottom fw-bold bg-white" style="z-index: 3">
+            <div class="container-fluid">
+                <a class="logo m-3" href="documentation/index.html">
+                    <img src="./assets/img/logo.png" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDoc" aria-controls="navbarDoc" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarDoc">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="documentation/index.html">Introduction</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="documentation/components/accordion.html">Components</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="documentation/changelog.html">Changelog</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Navigation -->
+
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-auto bg-white border-end hide-scrollbar" style="z-index: 2;position: fixed;top: 79px;height: calc(100% - 79px);overflow: auto;">
+                    <div class="p-5">
+                        <h5 class="me-20 mb-4 text-uppercase ls-1 fs-7">Getting started</h5>
+                        <ul class="list-unstyled mb-6">
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/index.html">Introduction</a>
+                            </li>
+                            <li class="list-item d-flex align-items-center justify-content-between ">
+                                <a class="text-muted" href="documentation/changelog.html">Changelog</a>
+                                <span class="badge bg-success ms-2">1.0</span>
+                            </li>
+                        </ul>
+                        <h5 class="mb-4 text-uppercase ls-1 fs-7">Components</h5>
+                        <ul class="list-unstyled mb-6">
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/accordion.html">Accordion</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/avatars.html">Avatars</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/badges.html">Badges</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/buttons.html">Buttons</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/contacts.html">Contacts</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/forms.html">Forms</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/messages.html">Messages</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/navs.html">Navs</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/separator.html">Separator</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/type-indicator.html">Type indicator</a>
+                            </li>
+                        </ul>
+                        <h5 class="mb-4 text-uppercase ls-1 fs-7">Utilities</h5>
+                        <ul class="list-unstyled mb-6">
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/helpers.html">Helpers</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/utilities.html">Utilities</a>
+                            </li>
+                        </ul>
+                        <h5 class="mb-4 text-uppercase ls-1 fs-7">Plugins</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/plugins/magnific-popup.html">Magnific popup</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Sidebar -->
+
+                <!-- Content -->
+                <div class="col-auto bg-light" style="position: fixed;left: 252px;right: 0px;top: 79px;height: calc(100% - 79px);overflow: auto;">
+                    <div class="p-8">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card p-8">
+                                        <div class="card-body">
+                                            <h2>Chat separator</h2>
+                                            <p>Create chat separator with multiple nested classes.</p>
+
+                                            <div class="py-4">
+                                                <div class="border rounded p-8 mb-8">
+                                                    <!-- Separator -->
+                                                    <div class="separator">
+                                                        <span class="separator-title fs-7 ls-1">Title</span>
+                                                    </div>
+                                                    <!-- Separator -->
+                                                </div>
+                                                <div class="highlight">
+                                                    <div class="highlight-code">
+                                                        <pre class="language-html">
+<code class="language-html">&lt;!-- Separator --&gt;
+&lt;div class=&quot;separator&quot;&gt;
+    &lt;span class=&quot;separator-title fs-7 ls-1&quot;&gt;Title&lt;/span&gt;
+&lt;/div&gt;
+&lt;!-- Separator --&gt;</code>
+</pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content -->
+            </div>
+        </div>
+    </div>
+    <!-- Layout -->
+    <!-- Javascript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+    <script src="assets/js/app.min.js"></script>
+    <!-- Javascript -->
+</body>
+<!-- Body -->
+
+</html>

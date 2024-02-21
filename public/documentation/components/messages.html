@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Head -->
+
+<head>
+    <base href="../../">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Chatflix &ndash; HTML Bootstrap 5 Chat Template</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-okaidia.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <link rel="stylesheet" href="assets/css/styles-light.min.css">
+    <link rel="stylesheet" href="assets/css/styles-dark.min.css" media="(prefers-color-scheme: dark)">
+</head>
+<!-- Head -->
+<!-- Body -->
+
+<body>
+    <!-- Layout -->
+    <div class="bg-light">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light border-bottom fw-bold bg-white" style="z-index: 3">
+            <div class="container-fluid">
+                <a class="logo m-3" href="documentation/index.html">
+                    <img src="./assets/img/logo.png" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDoc" aria-controls="navbarDoc" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarDoc">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="documentation/index.html">Introduction</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="documentation/components/accordion.html">Components</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="documentation/changelog.html">Changelog</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Navigation -->
+
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <div class="col-auto bg-white border-end hide-scrollbar" style="z-index: 2;position: fixed;top: 79px;height: calc(100% - 79px);overflow: auto;">
+                    <div class="p-5">
+                        <h5 class="me-20 mb-4 text-uppercase ls-1 fs-7">Getting started</h5>
+                        <ul class="list-unstyled mb-6">
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/index.html">Introduction</a>
+                            </li>
+                            <li class="list-item d-flex align-items-center justify-content-between ">
+                                <a class="text-muted" href="documentation/changelog.html">Changelog</a>
+                                <span class="badge bg-success ms-2">1.0</span>
+                            </li>
+                        </ul>
+                        <h5 class="mb-4 text-uppercase ls-1 fs-7">Components</h5>
+                        <ul class="list-unstyled mb-6">
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/accordion.html">Accordion</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/avatars.html">Avatars</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/badges.html">Badges</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/buttons.html">Buttons</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/contacts.html">Contacts</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/forms.html">Forms</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/messages.html">Messages</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/navs.html">Navs</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/separator.html">Separator</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/type-indicator.html">Type indicator</a>
+                            </li>
+                        </ul>
+                        <h5 class="mb-4 text-uppercase ls-1 fs-7">Utilities</h5>
+                        <ul class="list-unstyled mb-6">
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/helpers.html">Helpers</a>
+                            </li>
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/components/utilities.html">Utilities</a>
+                            </li>
+                        </ul>
+                        <h5 class="mb-4 text-uppercase ls-1 fs-7">Plugins</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li class="list-item mb-2">
+                                <a class="text-muted" href="documentation/plugins/magnific-popup.html">Magnific popup</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Sidebar -->
+
+                <!-- Content -->
+                <div class="col-auto bg-light" style="position: fixed;left: 252px;right: 0px;top: 79px;height: calc(100% - 79px);overflow: auto;">
+                    <div class="p-8">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card p-8">
+                                        <div class="card-body">
+                                            <h2>Messages</h2>
+                                            <p>Create messages with multiple nested classes. Use <code>.self</code> class alongside with <code>.message</code> for self message positioned to right side</p>
+
+                                            <div class="py-4">
+                                                <div class="border rounded p-8 mb-8">
+                                                    <!-- Message -->
+                                                    <div class="message">
+                                                        <div class="message-wrap">
+                                                            <div class="message-item">
+                                                                <div class="message-content">
+                                                                    <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium fugiat eligendi blanditiis enim.</span>
+                                                                </div>
+                                                                <div class="dropdown align-self-center">
+                                                                    <button class="btn btn-icon btn-base btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="ri-more-2-fill"></i>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu">
+                                                                        <li>
+                                                                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Favorite
+                                                                                <i class="ri-star-line"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Share
+                                                                                <i class="ri-share-line"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Delete
+                                                                                <i class="ri-delete-bin-line"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="message-info">
+                                                            <div class="avatar avatar-sm">
+                                                                <span class="avatar-label bg-primary text-white">AM</span>
+                                                            </div>
+                                                            <div>
+                                                                <h5 class="mb-0">Ariel Martinez</h5>
+                                                                <small class="text-muted">9:15 PM
+                                                                    <i class="ri-check-double-line align-bottom text-success fs-5"></i>
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Message -->
+
+                                                    <!-- Message -->
+                                                    <div class="message self">
+                                                        <div class="message-wrap">
+                                                            <div class="message-item">
+                                                                <div class="message-content">
+                                                                    <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium fugiat eligendi blanditiis enim.</span>
+                                                                </div>
+                                                                <div class="dropdown align-self-center">
+                                                                    <button class="btn btn-icon btn-base btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                        <i class="ri-more-2-fill"></i>
+                                                                    </button>
+                                                                    <ul class="dropdown-menu dropdown-menu-end">
+                                                                        <li>
+                                                                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Favorite
+                                                                                <i class="ri-star-line"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Share
+                                                                                <i class="ri-share-line"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                        <li>
+                                                                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Delete
+                                                                                <i class="ri-delete-bin-line"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="message-info">
+                                                            <div class="avatar avatar-sm">
+                                                                <span class="avatar-label bg-success text-white">JD</span>
+                                                            </div>
+                                                            <div>
+                                                                <h5 class="mb-0">John Davis</h5>
+                                                                <small class="text-muted">9:26 PM
+                                                                    <i class="ri-check-double-line align-bottom text-success fs-5"></i>
+                                                                </small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Message -->
+                                                </div>
+                                                <div class="highlight">
+                                                    <div class="highlight-code">
+                                                        <pre class="language-html">
+<code class="language-html">&lt;!-- Message --&gt;
+&lt;div class=&quot;message&quot;&gt;
+    &lt;div class=&quot;message-wrap&quot;&gt;
+        &lt;div class=&quot;message-item&quot;&gt;
+            &lt;div class=&quot;message-content&quot;&gt;
+                &lt;span&gt;Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium fugiat eligendi blanditiis enim.&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;dropdown align-self-center&quot;&gt;
+                &lt;button class=&quot;btn btn-icon btn-base btn-sm&quot; type=&quot;button&quot; data-bs-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot;&gt;
+                    &lt;i class=&quot;ri-more-2-fill&quot;&gt;&lt;/i&gt;
+                &lt;/button&gt;
+                &lt;ul class=&quot;dropdown-menu&quot;&gt;
+                    &lt;li&gt;
+                        &lt;a class=&quot;dropdown-item d-flex align-items-center justify-content-between&quot; href=&quot;#&quot;&gt;Favorite
+                            &lt;i class=&quot;ri-star-line&quot;&gt;&lt;/i&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a class=&quot;dropdown-item d-flex align-items-center justify-content-between&quot; href=&quot;#&quot;&gt;Share
+                            &lt;i class=&quot;ri-share-line&quot;&gt;&lt;/i&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a class=&quot;dropdown-item d-flex align-items-center justify-content-between&quot; href=&quot;#&quot;&gt;Delete
+                            &lt;i class=&quot;ri-delete-bin-line&quot;&gt;&lt;/i&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;message-info&quot;&gt;
+        &lt;div class=&quot;avatar avatar-sm&quot;&gt;
+            &lt;img src=&quot;./assets/img/02.png&quot; alt=&quot;Ariel Martinez&quot;&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;h5 class=&quot;mb-0&quot;&gt;Ariel Martinez&lt;/h5&gt;
+            &lt;small class=&quot;text-muted&quot;&gt;9:15 PM
+                &lt;i class=&quot;ri-check-double-line align-bottom text-success fs-5&quot;&gt;&lt;/i&gt;
+            &lt;/small&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Message --&gt;
+
+&lt;!-- Message --&gt;
+&lt;div class=&quot;message self&quot;&gt;
+    &lt;div class=&quot;message-wrap&quot;&gt;
+        &lt;div class=&quot;message-item&quot;&gt;
+            &lt;div class=&quot;message-content&quot;&gt;
+                &lt;span&gt;Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium fugiat eligendi blanditiis enim.&lt;/span&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;dropdown align-self-center&quot;&gt;
+                &lt;button class=&quot;btn btn-icon btn-base btn-sm&quot; type=&quot;button&quot; data-bs-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot;&gt;
+                    &lt;i class=&quot;ri-more-2-fill&quot;&gt;&lt;/i&gt;
+                &lt;/button&gt;
+                &lt;ul class=&quot;dropdown-menu dropdown-menu-end&quot;&gt;
+                    &lt;li&gt;
+                        &lt;a class=&quot;dropdown-item d-flex align-items-center justify-content-between&quot; href=&quot;#&quot;&gt;Favorite
+                            &lt;i class=&quot;ri-star-line&quot;&gt;&lt;/i&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a class=&quot;dropdown-item d-flex align-items-center justify-content-between&quot; href=&quot;#&quot;&gt;Share
+                            &lt;i class=&quot;ri-share-line&quot;&gt;&lt;/i&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a class=&quot;dropdown-item d-flex align-items-center justify-content-between&quot; href=&quot;#&quot;&gt;Delete
+                            &lt;i class=&quot;ri-delete-bin-line&quot;&gt;&lt;/i&gt;
+                        &lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;message-info&quot;&gt;
+        &lt;div class=&quot;avatar avatar-sm&quot;&gt;
+            &lt;img src=&quot;./assets/img/12.png&quot; alt=&quot;John Davis&quot;&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;h5 class=&quot;mb-0&quot;&gt;John Davis&lt;/h5&gt;
+            &lt;small class=&quot;text-muted&quot;&gt;9:26 PM
+                &lt;i class=&quot;ri-check-double-line align-bottom text-success fs-5&quot;&gt;&lt;/i&gt;
+            &lt;/small&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;!-- Message --&gt;</code>
+</pre>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Content -->
+            </div>
+        </div>
+    </div>
+    <!-- Layout -->
+    <!-- Javascript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"></script>
+    <script src="assets/js/app.min.js"></script>
+    <!-- Javascript -->
+</body>
+<!-- Body -->
+
+</html>

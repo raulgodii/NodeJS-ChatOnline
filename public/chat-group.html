@@ -1235,13 +1235,13 @@
                             <ul class="nav nav-pills nav-segmented" id="pills-tab" role="tablist">
                                 <!-- Direct Nav Item -->
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link active" id="pills-direct-tab" data-bs-toggle="pill" href="#direct-tab" role="tab" aria-controls="pills-direct-tab" aria-selected="true">Direct</a>
+                                    <a class="nav-link" id="pills-direct-tab" data-bs-toggle="pill" href="#direct-tab" role="tab" aria-controls="pills-direct-tab" aria-selected="false">Direct</a>
                                 </li>
                                 <!-- Direct Nav Item -->
 
                                 <!-- Group Nav Item -->
                                 <li class="nav-item" role="presentation">
-                                    <a class="nav-link" id="pills-group-tab" data-bs-toggle="pill" href="#groups-tab" role="tab" aria-controls="pills-group-tab" aria-selected="false">Groups</a>
+                                    <a class="nav-link active" id="pills-group-tab" data-bs-toggle="pill" href="#groups-tab" role="tab" aria-controls="pills-group-tab" aria-selected="true">Groups</a>
                                 </li>
                                 <!-- Group Nav Item -->
                             </ul>
@@ -1252,10 +1252,10 @@
                         <div class="hide-scrollbar h-100">
                             <div class="tab-content m-4 mt-1">
                                 <!-- Direct Chats Tab -->
-                                <div class="tab-pane fade show active" id="direct-tab" role="tabpanel">
+                                <div class="tab-pane fade" id="direct-tab" role="tabpanel">
                                     <ul class="list-unstyled js-contact-list mb-0">
                                         <!-- Chat Link 1 -->
-                                        <li class="card contact-item active mb-3">
+                                        <li class="card contact-item mb-3">
                                             <a href="index.html" class="contact-link"></a>
                                             <div class="card-body">
                                                 <div class="d-flex align-items-center">
@@ -1513,10 +1513,10 @@
                                 <!-- Direct Chats Tab -->
 
                                 <!-- Group Chats Tab -->
-                                <div class="tab-pane fade" id="groups-tab" role="tabpanel">
+                                <div class="tab-pane fade show active" id="groups-tab" role="tabpanel">
                                     <ul class="list-unstyled js-contact-list mb-0">
                                         <!-- Chat Link 1 -->
-                                        <li class="card contact-item mb-3">
+                                        <li class="card contact-item active mb-3">
                                             <a href="chat-group.html" class="contact-link"></a>
                                             <div class="card-body">
                                                 <div class="d-flex align-items-center">
@@ -2537,19 +2537,20 @@
                                         <!-- Close Chat Button -->
 
                                         <!-- Avatar -->
-                                        <div class="avatar avatar-online avatar-sm me-3">
-                                            <span class="avatar-label bg-soft-primary text-primary fs-6">AM</span>
+                                        <div class="avatar avatar-sm me-3">
+                                            <span class="avatar-label bg-primary text-white fs-6">G</span>
                                         </div>
                                         <!-- Avatar -->
 
                                         <!-- Text -->
                                         <div class="flex-grow-1 overflow-hidden">
-                                            <h6 class="d-block text-truncate mb-1">Ariel Martinez</h6>
-                                            <p class="d-block text-truncate text-success fs-6 mb-0">Available</p>
+                                            <h6 class="d-block text-truncate mb-1">General</h6>
+                                            <p class="d-block text-truncate text-muted fs-6 mb-0">5 online &ndash; Communication on any subject.</p>
                                         </div>
                                         <!-- Text -->
                                     </div>
                                 </div>
+
                                 <div class="col-4 col-sm-7">
                                     <ul class="list-inline text-end mb-0">
                                         <!-- Search Button -->
@@ -2639,61 +2640,10 @@
                         <div class="container-fluid g-0 p-4">
                             <!-- Message 1 -->
                             <div class="message">
-                                <div class="message-wrap">
+                                <div class="message-wrap">                                    
                                     <div class="message-item">
                                         <div class="message-content">
-                                            <!-- Shared Photos -->
-                                            <h6>Shared Photos:</h6>
-                                            <div class="shared-image-list row align-items-center g-3">
-                                                <div class="col">
-                                                    <a class="shared-image" href="./assets/img/reset-dark.png">
-                                                        <img class="img-fluid rounded-2" src="./assets/img/reset-dark.png" alt="preview" data-action="zoom">
-                                                    </a>
-                                                </div>
-                                                <div class="col">
-                                                    <a class="shared-image" href="./assets/img/signin-dark.png">
-                                                        <img class="img-fluid rounded-2" src="./assets/img/signin-dark.png" alt="preview" data-action="zoom">
-                                                    </a>
-                                                </div>
-                                                <div class="col">
-                                                    <a class="shared-image" href="./assets/img/signup-dark.png">
-                                                        <img class="img-fluid rounded-2" src="./assets/img/signup-dark.png" alt="preview" data-action="zoom">
-                                                    </a>
-                                                </div>
-                                                <div class="col">
-                                                    <a class="shared-image" href="./assets/img/reset-dark.png">
-                                                        <img class="img-fluid rounded-2" src="./assets/img/reset-dark.png" alt="preview" data-action="zoom">
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <!-- Shared Photos -->
-                                        </div>
-                                        <div class="dropdown align-self-center">
-                                            <button class="btn btn-icon btn-base btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="ri-more-2-fill"></i>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Edit
-                                                        <i class="ri-edit-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Share
-                                                        <i class="ri-share-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Delete
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="message-item">
-                                        <div class="message-content">
-                                            <span>Hi John, please take a look at the result of my work, this is a project that I am currently working on.</span>
+                                            <span>Hi, guys, help me find housing for temporary residence, closer to my place of work.</span>
                                         </div>
                                         <div class="dropdown align-self-center">
                                             <button class="btn btn-icon btn-base btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -2721,10 +2671,10 @@
                                 </div>
                                 <div class="message-info">
                                     <div class="avatar avatar-sm">
-                                        <span class="avatar-label bg-soft-primary text-primary fs-6">AM</span>
+                                        <span class="avatar-label bg-success text-white fs-6">DG</span>
                                     </div>
                                     <div>
-                                        <h6 class="mb-0">Ariel Martinez</h6>
+                                        <h6 class="mb-0">Donald Graves</h6>
                                         <small class="text-muted">9:15 PM
                                             <i class="ri-check-double-line align-bottom text-success fs-5"></i>
                                         </small>
@@ -2735,37 +2685,10 @@
 
                             <!-- Message 2 -->
                             <div class="message self">
-                                <div class="message-wrap">
+                                <div class="message-wrap">                                    
                                     <div class="message-item">
                                         <div class="message-content">
-                                            <span>Hi Ariel, it looks great except for a few things.</span>
-                                        </div>
-                                        <div class="dropdown align-self-center">
-                                            <button class="btn btn-icon btn-base btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="ri-more-2-fill"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Edit
-                                                        <i class="ri-edit-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Share
-                                                        <i class="ri-share-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Delete
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="message-item">
-                                        <div class="message-content">
-                                            <span>Now I will try to explain, the primari color is strongly out of the general composition, try to use flatter colors.</span>
+                                            <span>Donald, I can offer you the Real Estate group, they will quickly help you, now I will send you an invitation.</span>
                                         </div>
                                         <div class="dropdown align-self-center">
                                             <button class="btn btn-icon btn-base btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -2816,34 +2739,7 @@
                                 <div class="message-wrap">
                                     <div class="message-item">
                                         <div class="message-content">
-                                            <span>Looks like I should do some more design work, thanks for the help.</span>
-                                        </div>
-                                        <div class="dropdown align-self-center">
-                                            <button class="btn btn-icon btn-base btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="ri-more-2-fill"></i>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Edit
-                                                        <i class="ri-edit-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Share
-                                                        <i class="ri-share-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Delete
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="message-item">
-                                        <div class="message-content">
-                                            <span>Perhaps enough work for today, tell us how you spend time with your friends.</span>
+                                            <span>Hi, John, can you show a photo from the last meeting, I would like to have a look at all of you.</span>
                                         </div>
                                         <div class="dropdown align-self-center">
                                             <button class="btn btn-icon btn-base btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -2871,10 +2767,10 @@
                                 </div>
                                 <div class="message-info">
                                     <div class="avatar avatar-sm">
-                                        <span class="avatar-label bg-soft-primary text-primary fs-6">AM</span>
+                                        <span class="avatar-label bg-soft-info text-info fs-6">JP</span>
                                     </div>
                                     <div>
-                                        <h6 class="mb-0">Ariel Martinez</h6>
+                                        <h6 class="mb-0">Jerry Prater</h6>
                                         <small class="text-muted">9:37 PM
                                             <i class="ri-check-double-line align-bottom text-success fs-5"></i>
                                         </small>
@@ -2888,97 +2784,7 @@
                                 <div class="message-wrap">
                                     <div class="message-item">
                                         <div class="message-content">
-                                            <span>We combine recreation and sports, there are many ways to relax, you can join us at any time.</span>
-                                        </div>
-                                        <div class="dropdown align-self-center">
-                                            <button class="btn btn-icon btn-base btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="ri-more-2-fill"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Edit
-                                                        <i class="ri-edit-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Share
-                                                        <i class="ri-share-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Delete
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="message-info">
-                                    <div class="avatar avatar-sm">
-                                        <span class="avatar-label bg-soft-success text-success fs-6">JD</span>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-0">John Davis</h6>
-                                        <small class="text-muted">9:42 PM
-                                            <i class="ri-check-double-line align-bottom text-success fs-5"></i>
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Message 4 -->
-
-                            <!-- Message 5 -->
-                            <div class="message">
-                                <div class="message-wrap">
-                                    <div class="message-item">
-                                        <div class="message-content">
-                                            <span>Great, I love outdoor activities, invite me for a company next time.</span>
-                                        </div>
-                                        <div class="dropdown align-self-center">
-                                            <button class="btn btn-icon btn-base btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="ri-more-2-fill"></i>
-                                            </button>
-                                            <ul class="dropdown-menu">
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Edit
-                                                        <i class="ri-edit-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Share
-                                                        <i class="ri-share-line"></i>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Delete
-                                                        <i class="ri-delete-bin-line"></i>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="message-info">
-                                    <div class="avatar avatar-sm">
-                                        <span class="avatar-label bg-soft-primary text-primary fs-6">AM</span>
-                                    </div>
-                                    <div>
-                                        <h6 class="mb-0">Ariel Martinez</h6>
-                                        <small class="text-muted">9:46 PM
-                                            <i class="ri-check-double-line align-bottom text-success fs-5"></i>
-                                        </small>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Message 5 -->
-
-                            <!-- Message 6 -->
-                            <div class="message self">
-                                <div class="message-wrap">
-                                    <div class="message-item">
-                                        <div class="message-content">
-                                            <span>Of course, Ariel, I will. Here is a photo report from the last meeting.</span>
+                                            <span>Shure, Jerry, here you go.</span>
                                         </div>
                                         <div class="dropdown align-self-center">
                                             <button class="btn btn-icon btn-base btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -3044,15 +2850,15 @@
                                     </div>
                                     <div>
                                         <h6 class="mb-0">John Davis</h6>
-                                        <small class="text-muted">9:53 PM
+                                        <small class="text-muted">9:42 PM
                                             <i class="ri-check-double-line align-bottom text-success fs-5"></i>
                                         </small>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Message 6 -->
-
-                            <!-- Message 7 -->
+                            <!-- Message 4 --> 
+                            
+                            <!-- Message 5 -->
                             <div class="message">
                                 <div class="message-wrap">
                                     <div class="message-item">
@@ -3069,14 +2875,14 @@
                                 </div>
                                 <div class="message-info">
                                     <div class="avatar avatar-sm">
-                                        <span class="avatar-label bg-soft-primary text-primary fs-6">AM</span>
+                                        <span class="avatar-label bg-soft-info text-info fs-6">JP</span>
                                     </div>
                                     <div>
-                                        <h6 class="mb-0">Ariel Martinez</h6>
+                                        <h6 class="mb-0">Jerry Prater</h6>
                                     </div>
                                 </div>
                             </div>
-                            <!-- Message 7 -->
+                            <!-- Message 5 -->
                         </div>
                         <!-- Messages -->
 
@@ -3126,7 +2932,7 @@
                             <ul class="d-flex justify-content-between align-items-center list-unstyled w-100 mx-4 mb-0">
                                 <!-- Title -->
                                 <li>
-                                    <h3 class="mb-0">User Profile</h3>
+                                    <h3 class="mb-0">Group Info</h3>
                                 </li>
                                 <!-- Title -->
 
@@ -3147,22 +2953,17 @@
                             <div class="text-center p-4 pt-14">
                                 <!-- Avatar -->
                                 <div class="avatar avatar-xl mb-4">
-                                    <span class="avatar-label bg-soft-primary text-primary fs-3">AM</span>
+                                    <span class="avatar-label bg-primary text-white fs-3">G</span>
                                 </div>
                                 <!-- Avatar -->
 
                                 <!-- Text -->
-                                <h5>Ariel Martinez</h5>
-                                <!-- Text -->
-
-                                <!-- Text -->
-                                <p class="text-muted fs-6">UX/UI Design</p>
+                                <h5>General</h5>
                                 <!-- Text -->
 
                                 <!-- Text -->
                                 <div class="text-center">
-                                    <span class="text-muted mb-0">Graphic designer.<br>
-                                         Working with landing pages and templates.</span>
+                                    <span class="text-muted mb-0">Communication on any subject.</span>
                                 </div>
                                 <!-- Text -->
                             </div>
@@ -3170,13 +2971,13 @@
 
                             <!-- Segmented Control -->
                             <div class="text-center mb-2">
-                                <ul class="nav nav-pills nav-segmented" id="pills-tab-user-profile" role="tablist">
-                                    <!-- About -->
+                                <ul class="nav nav-pills nav-segmented" id="pills-tab-group" role="tablist">
+                                    <!-- Members -->
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link active" id="pills-about-tab" data-bs-toggle="pill" data-bs-target="#pills-about" type="button" role="tab" aria-controls="pills-about" aria-selected="true">About</button>
+                                        <button class="nav-link active" id="pills-users-tab" data-bs-toggle="pill" data-bs-target="#pills-users" type="button" role="tab" aria-controls="pills-users" aria-selected="true">Users</button>
                                     </li>
-                                    <!-- About -->
-
+                                    <!-- Members -->
+                                    
                                     <!-- Files -->
                                     <li class="nav-item" role="presentation">
                                         <button class="nav-link" id="pills-files-tab" data-bs-toggle="pill" data-bs-target="#pills-files" type="button" role="tab" aria-controls="pills-files" aria-selected="false">Files</button>
@@ -3187,30 +2988,208 @@
                             <!-- Segmented Control -->
 
                             <!-- Tab Content -->
-                            <div class="tab-content" id="pills-tab-user-profile-content">
-                                <!-- About -->
-                                <div class="tab-pane fade show active" id="pills-about" role="tabpanel" aria-labelledby="pills-about-tab">
+                            <div class="tab-content" id="pills-tab-group-content">
+                                <!-- Users -->
+                                <div class="tab-pane fade show active" id="pills-users" role="tabpanel" aria-labelledby="pills-users-tab">
                                     <ul class="list-group list-group-flush">
+                                        <!-- User 1 -->
                                         <li class="list-group-item py-4">
-                                            <h6 class="mb-1">Name</h6>
-                                            <p class="text-truncate mb-0">Ariel Martinez</p>
+                                            <div class="row align-items-center gx-4">
+                                                <!-- Avatar -->
+                                                <div class="col-auto">
+                                                    <div class="avatar avatar-sm avatar-online">
+                                                        <span class="avatar-label bg-soft-success text-success fs-6">JD</span>
+                                                    </div>
+                                                </div>
+                                                <!-- Avatar -->
+
+                                                <!-- Text -->
+                                                <div class="col overflow-hidden">
+                                                    <h6 class="text-truncate mb-1">John Davis</h6>
+                                                    <p class="text-success mb-0 fs-6">Online</p>                                                    
+                                                </div>
+                                                <!-- Text -->
+
+                                                <!-- Dropdown -->
+                                                <div class="col-auto">
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-icon btn-base btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="ri-more-fill"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu dropdown-menu-right">
+                                                            <li>
+                                                                <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Invite<i class="ri-user-add-line"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Block<i class="ri-forbid-line"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <!-- Dropdown -->
+                                            </div>
                                         </li>
+                                        <!-- User 1 -->
+
+                                        <!-- User 2 -->
                                         <li class="list-group-item py-4">
-                                            <h6 class="mb-1">Email</h6>
-                                            <p class="text-truncate mb-0">ariel@gmail.com</p>
+                                            <div class="row align-items-center gx-4">
+                                                <!-- Avatar -->
+                                                <div class="col-auto">
+                                                    <div class="avatar avatar-sm">
+                                                        <span class="avatar-label bg-primary text-white fs-6">DG</span>
+                                                    </div>
+                                                </div>
+                                                <!-- Avatar -->
+
+                                                <!-- Text -->
+                                                <div class="col overflow-hidden">
+                                                    <h6 class="text-truncate mb-1">Donald Graves</h6>
+                                                    <p class="text-muted mb-0 fs-6">Last seen 4 days ago</p>
+                                                </div>
+                                                <!-- Text -->
+
+                                                <!-- Dropdown -->
+                                                <div class="col-auto">
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-icon btn-base btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="ri-more-fill"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu dropdown-menu-right">
+                                                            <li>
+                                                                <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Invite<i class="ri-user-add-line"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Block<i class="ri-forbid-line"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <!-- Dropdown -->
+                                            </div>
                                         </li>
+                                        <!-- User 2 -->
+
+                                        <!-- User 3 -->
                                         <li class="list-group-item py-4">
-                                            <h6 class="mb-1">Phone</h6>
-                                            <p class="text-truncate mb-0">646-210-1784</p>
+                                            <div class="row align-items-center gx-4">
+                                                <!-- Avatar -->
+                                                <div class="col-auto">
+                                                    <div class="avatar avatar-sm">
+                                                        <span class="avatar-label bg-danger text-white fs-6">JS</span>
+                                                    </div>
+                                                </div>
+                                                <!-- Avatar -->
+
+                                                <!-- Text -->
+                                                <div class="col overflow-hidden">
+                                                    <h6 class="text-truncate mb-1">Joe Stoner</h6>
+                                                    <p class="text-muted mb-0 fs-6">Last seen recently</p>
+                                                </div>
+                                                <!-- Text -->
+
+                                                <!-- Dropdown -->
+                                                <div class="col-auto">
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-icon btn-base btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="ri-more-fill"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu dropdown-menu-right">
+                                                            <li>
+                                                                <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Invite<i class="ri-user-add-line"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Block<i class="ri-forbid-line"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <!-- Dropdown -->
+                                            </div>
                                         </li>
+                                        <!-- User 3 -->
+
+                                        <!-- User 4 -->
                                         <li class="list-group-item py-4">
-                                            <h6 class="mb-1">Location</h6>
-                                            <p class="text-truncate mb-0">New York, USA</p>
+                                            <div class="row align-items-center gx-4">
+                                                <!-- Avatar -->
+                                                <div class="col-auto">
+                                                    <div class="avatar avatar-sm">
+                                                        <span class="avatar-label bg-warning text-white fs-6">KS</span>
+                                                    </div>
+                                                </div>
+                                                <!-- Avatar -->
+
+                                                <!-- Text -->
+                                                <div class="col overflow-hidden">
+                                                    <h6 class="text-truncate mb-1">Kelly Smith</h6>
+                                                    <p class="text-muted mb-0 fs-6">Last seen long time ago</p>
+                                                </div>
+                                                <!-- Text -->
+
+                                                <!-- Dropdown -->
+                                                <div class="col-auto">
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-icon btn-base btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="ri-more-fill"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu dropdown-menu-right">
+                                                            <li>
+                                                                <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Invite<i class="ri-user-add-line"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Block<i class="ri-forbid-line"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <!-- Dropdown -->
+                                            </div>
+                                        </li> 
+                                        <!-- User 4 -->
+
+                                        <!-- User 5 -->
+                                        <li class="list-group-item py-4">
+                                            <div class="row align-items-center gx-4">
+                                                <!-- Avatar -->
+                                                <div class="col-auto">
+                                                    <div class="avatar avatar-sm avatar-online">
+                                                        <span class="avatar-label bg-soft-info text-info fs-6">JP</span>
+                                                    </div>
+                                                </div>
+                                                <!-- Avatar -->
+
+                                                <!-- Text -->
+                                                <div class="col overflow-hidden">
+                                                    <h6 class="text-truncate mb-1">Jerry Prater</h6>
+                                                    <p class="text-success mb-0 fs-6">Online</p>                                                    
+                                                </div>
+                                                <!-- Text -->
+
+                                                <!-- Dropdown -->
+                                                <div class="col-auto">
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-icon btn-base btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="ri-more-fill"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu dropdown-menu-right">
+                                                            <li>
+                                                                <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Invite<i class="ri-user-add-line"></i></a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Block<i class="ri-forbid-line"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <!-- Dropdown -->
+                                            </div>
                                         </li>
+                                        <!-- User 5 -->
                                     </ul>
                                 </div>
-                                <!-- About -->
-
+                                <!-- Users -->
+                                
                                 <!-- Files -->
                                 <div class="tab-pane fade" id="pills-files" role="tabpanel" aria-labelledby="pills-files-tab">
                                     <ul class="list-group list-group-flush">
