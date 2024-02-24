@@ -53,6 +53,12 @@ socket.on('sendMessage', (response) => {
     chat.innerHTML += messageContent;
 });
 
+socket.on('usersConnected', (usersConnected) => {
+    usersConnectedElement = document.getElementById('usersConnected');
+
+    usersConnectedElement.innerHTML = usersConnected + ' online';
+});
+
 function sendMessage() {
     const messageInput = document.getElementById("message");
     const message = messageInput.value.trim();

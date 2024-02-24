@@ -32,7 +32,16 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 /** CHAT JS */
+let usersConnected = 0;
+
 io.on('connection', (socket) => {
+  usersConnected++;
+  io.emit('usersConnected', usersConnected);
+
+  socket.on('disconnect', () => {
+    usersConnected--;
+    io.emit('usersConnected', usersConnected);
+  });
 
   socket.on('sendMessage', (msg, user) => {
     let response = {
