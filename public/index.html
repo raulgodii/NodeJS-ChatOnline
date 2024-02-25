@@ -23,6 +23,10 @@
             transform: scale(1.1);
             cursor: pointer;
         }
+
+        .chat-content {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 
@@ -48,14 +52,17 @@
                                 <!-- Username -->
                                 <div class="mb-4">
                                     <label class="mb-2" for="username">Username</label>
-                                    <input type="text" id="username" class="form-control form-control-solid form-control-lg" placeholder="Enter your username">
+                                    <input type="text" id="username"
+                                        class="form-control form-control-solid form-control-lg"
+                                        placeholder="Enter your username">
                                 </div>
                                 <!-- Username -->
 
                                 <!-- Remember -->
                                 <div class="d-flex justify-content-between mb-4">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="remember-check" checked>
+                                        <input class="form-check-input" type="checkbox" value="" id="remember-check"
+                                            checked>
                                         <label class="form-check-label" for="remember-check">
                                             Remember me
                                         </label>
@@ -73,7 +80,7 @@
 
                             <!-- Text -->
                             <p id="errorSignIn" class="text-center mb-0" style="color: red;">
-                                
+
                             </p>
                             <!-- Text -->
 
@@ -113,21 +120,27 @@
                                 <!-- Username -->
                                 <div class="mb-4">
                                     <label class="mb-2" for="username">Username</label>
-                                    <input type="text" id="username2" class="form-control form-control-solid form-control-lg" placeholder="Enter your username">
+                                    <input type="text" id="username2"
+                                        class="form-control form-control-solid form-control-lg"
+                                        placeholder="Enter your username">
                                 </div>
                                 <!-- Username -->
 
                                 <!-- Email -->
                                 <div class="mb-4">
                                     <label for="email" class="mb-2">Email</label>
-                                    <input type="email" id="email" class="form-control form-control-solid form-control-lg" placeholder="Enter your email">
+                                    <input type="email" id="email"
+                                        class="form-control form-control-solid form-control-lg"
+                                        placeholder="Enter your email">
                                 </div>
                                 <!-- Email -->
 
                                 <!-- Password -->
                                 <div class="mb-4">
                                     <label for="password" class="mb-2">Password</label>
-                                    <input type="password" id="password" class="form-control form-control-solid form-control-lg" placeholder="Enter your password">
+                                    <input type="password" id="password"
+                                        class="form-control form-control-solid form-control-lg"
+                                        placeholder="Enter your password">
                                 </div>
                                 <!-- Password -->
 
@@ -731,22 +744,22 @@
                                     <div class="row">
                                         <div class="col">
                                             <div class="input-group">
-                                                <img class="sticker" onclick="attachSticker('sticker1.jpg')" class="sticker"
-                                                    src="assets/img/stickers/sticker1.jpg" alt="">
+                                                <img class="sticker" onclick="attachSticker('sticker1.jpg')"
+                                                    class="sticker" src="assets/img/stickers/sticker1.jpg" alt="">
                                                 <img class="sticker" onclick="adjuntar('sticker2.jpg')" class="sticker"
                                                     src="assets/img/stickers/sticker2.jpg" alt="">
-                                                <img class="sticker" onclick="attachSticker('sticker3.webp')" class="sticker"
-                                                    src="assets/img/stickers/sticker3.webp" alt="">
-                                                <img class="sticker" onclick="attachSticker('sticker4.jpg')" class="sticker"
-                                                    src="assets/img/stickers/sticker4.jpg" alt="">
-                                                <img class="sticker" onclick="attachSticker('sticker5.png')" class="sticker"
-                                                    src="assets/img/stickers/sticker5.png" alt="">
-                                                <img class="sticker" onclick="attachSticker('sticker6.webp')" class="sticker"
-                                                    src="assets/img/stickers/sticker6.webp" alt="">
-                                                <img class="sticker" onclick="attachSticker('sticker7.jpg')" class="sticker"
-                                                    src="assets/img/stickers/sticker7.jpg" alt="">
-                                                <img class="sticker" onclick="attachSticker('sticker8.jpg')" class="sticker"
-                                                    src="assets/img/stickers/sticker8.jpg" alt="">
+                                                <img class="sticker" onclick="attachSticker('sticker3.webp')"
+                                                    class="sticker" src="assets/img/stickers/sticker3.webp" alt="">
+                                                <img class="sticker" onclick="attachSticker('sticker4.jpg')"
+                                                    class="sticker" src="assets/img/stickers/sticker4.jpg" alt="">
+                                                <img class="sticker" onclick="attachSticker('sticker5.png')"
+                                                    class="sticker" src="assets/img/stickers/sticker5.png" alt="">
+                                                <img class="sticker" onclick="attachSticker('sticker6.webp')"
+                                                    class="sticker" src="assets/img/stickers/sticker6.webp" alt="">
+                                                <img class="sticker" onclick="attachSticker('sticker7.jpg')"
+                                                    class="sticker" src="assets/img/stickers/sticker7.jpg" alt="">
+                                                <img class="sticker" onclick="attachSticker('sticker8.jpg')"
+                                                    class="sticker" src="assets/img/stickers/sticker8.jpg" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -767,8 +780,9 @@
                                                 class="ri-attachment-2"></i></button>
                                         <input id="message" type="text" class="form-control form-control-lg"
                                             placeholder="Type message" aria-label="type message">
-                                        <button data-bs-toggle="collapse" data-bs-target="#chat-stickers" class="btn btn-white btn-lg border"
-                                            type="button"><i class="ri-chat-smile-2-line"></i></button>
+                                        <button data-bs-toggle="collapse" data-bs-target="#chat-stickers"
+                                            class="btn btn-white btn-lg border" type="button"><i
+                                                class="ri-chat-smile-2-line"></i></button>
                                     </div>
                                 </div>
                                 <!-- Input -->

@@ -155,6 +155,7 @@ function addMessageToChat(data, user, type = 'msg', self = true) {
     chat.innerHTML += messageContent;
 }
 
+// Open chat from panel
 function openChat(){
     group = document.getElementById('group1');
     if (group.classList.contains("main-visible")) {
@@ -162,6 +163,12 @@ function openChat(){
     } else {
         group.classList.add("main-visible");
     }
+}
+
+// Scroll to bottom
+function scrollToBottom() {
+    var chatContent = document.querySelector('.chat-content');
+    chatContent.scrollTop = chatContent.scrollHeight;
 }
 
 /** ---|| RECIBIR ||--- */
@@ -230,17 +237,23 @@ socket.on('userList', (response) => {
 socket.on('sendMessage', (response) => {
     response = JSON.parse(response);
 
-    addMessageToChat(response.msg, response.user, 'msg', false)
+    addMessageToChat(response.msg, response.user, 'msg', false);
+
+    scrollToBottom();
 });
 
 // Recibir sticker
 socket.on('attachSticker', (stickerSrc, user) => {
     addMessageToChat(stickerSrc, user, 'sticker', false);
+
+    scrollToBottom();
 });
 
 // Recibir escribiendo
 socket.on('writing', (user) => {
     addMessageToChat('', user, 'writing', false);
+
+    scrollToBottom();
 });
 
 // Recibir dejar de escribir
@@ -264,6 +277,8 @@ function sendMessage() {
         isWriting = false;
         socket.emit('stopWriting', userName);
         socket.emit('sendMessage', message, userName);
+
+        scrollToBottom();
     }
 }
 
@@ -271,6 +286,8 @@ function sendMessage() {
 function attachSticker(stickerSrc) {
     addMessageToChat(stickerSrc, 'Me', 'sticker');
     socket.emit('attachSticker', stickerSrc, userName);
+
+    scrollToBottom();
 }
 
 // Enviar escribiendo
