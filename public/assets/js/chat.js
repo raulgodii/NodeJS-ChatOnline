@@ -5,33 +5,36 @@ const messageInput = document.getElementById("message").addEventListener('input'
 const signInPage = document.getElementById('signIn');
 const signUpPage = document.getElementById('signUp');
 const homePage = document.getElementById('home');
+const userList = document.getElementById('usersList');
 let userName;
 
 let typingTimer;
 let isWriting = false;
 
 // Sign In Page
-function showSignIn(){
+function showSignIn() {
     signInPage.style.display = 'block';
     signUpPage.style.display = 'none';
     homePage.style.display = 'none';
 }
 
 // Sign Up Page
-function showSignUp(){
+function showSignUp() {
     signInPage.style.display = 'none';
     signUpPage.style.display = 'block';
     homePage.style.display = 'none';
 }
 
 // Home Page
-function showHome(){
+function showHome() {
     userName = document.getElementById('username').value;
 
-    if(validateUserName(userName)){
+    if (validateUserName(userName)) {
         signInPage.style.display = 'none';
         signUpPage.style.display = 'none';
         homePage.style.display = 'flex';
+
+        socket.emit('userList', userName);
     } else {
         document.getElementById('errorSignIn').innerHTML = 'Invalid username'
     }
@@ -41,10 +44,10 @@ function validateUserName(username) {
     var regex = /^[a-zA-Z0-9]+$/;
 
     if (!username || username.trim() === '' || !regex.test(username)) {
-        return false; 
+        return false;
     }
 
-    return true; 
+    return true;
 }
 
 // Hora actual
@@ -161,6 +164,57 @@ socket.on('usersConnected', (usersConnected) => {
     usersConnectedElement.innerHTML = usersConnected + ' online';
 });
 
+// Lista de usuarios conectados
+socket.on('userList', (response) => {
+    console.log(response)
+    response = JSON.parse(response);
+    
+
+    response.forEach(user => {
+        userElement = document.createElement('li');
+        userElement.className = 'list-group-item py-4';
+        userElement.innerHTML = `<div class="row align-items-center gx-4">
+        <!-- Avatar -->
+        <div class="col-auto">
+            <div class="avatar avatar-sm avatar-online">
+                <span
+                    class="avatar-label bg-soft-success text-success fs-6">JD</span>
+            </div>
+        </div>
+        <!-- Avatar -->
+
+        <!-- Text -->
+        <div class="col overflow-hidden">
+            <h6 class="text-truncate mb-1">${user.name}</h6>
+            <p class="text-success mb-0 fs-6">Online</p>
+        </div>
+        <!-- Text -->
+
+        <!-- Dropdown -->
+        <div class="col-auto">
+            <div class="dropdown">
+                <button class="btn btn-icon btn-base btn-sm" type="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="ri-more-fill"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                            href="#">Invite<i class="ri-user-add-line"></i></a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                            href="#">Block<i class="ri-forbid-line"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- Dropdown -->
+    </div>`
+        userList.appendChild(userElement)
+    });
+});
+
 // Recibir mensaje
 socket.on('sendMessage', (response) => {
     response = JSON.parse(response);
@@ -180,7 +234,7 @@ socket.on('writing', (user) => {
 
 // Recibir dejar de escribir
 socket.on('stopWriting', (user) => {
-    var writingElement = document.getElementById(user+'Writing');
+    var writingElement = document.getElementById(user + 'Writing');
 
     writingElement.remove();
 });
@@ -210,8 +264,8 @@ function attachSticker(stickerSrc) {
 function writing() {
     // Si el usuario ya está escribiendo, reiniciar el temporizador y no hacer nada más
     if (isWriting) {
-        clearTimeout(typingTimer); 
-        typingTimer = setTimeout(function() {
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(function () {
             isWriting = false;
             socket.emit('stopWriting', userName);
         }, 2500); // 2500 milisegundos
@@ -220,10 +274,10 @@ function writing() {
 
     isWriting = true;
 
-    typingTimer = setTimeout(function() {
+    typingTimer = setTimeout(function () {
         isWriting = false;
         socket.emit('stopWriting', userName);
-    }, 2500); 
+    }, 2500);
 
     socket.emit('writing', userName);
 }
