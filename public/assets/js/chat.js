@@ -2,9 +2,37 @@ let chat = document.getElementById("chat");
 const socket = io();
 
 const messageInput = document.getElementById("message").addEventListener('input', () => (writing('user')));
+const signInPage = document.getElementById('signIn');
+const signUpPage = document.getElementById('signUp');
+const homePage = document.getElementById('home');
+let userName;
 
 let typingTimer;
 let isWriting = false;
+
+// Sign In Page
+function showSignIn(){
+    signInPage.style.display = 'block';
+    signUpPage.style.display = 'none';
+    homePage.style.display = 'none';
+}
+
+// Sign Up Page
+function showSignUp(){
+    signInPage.style.display = 'none';
+    signUpPage.style.display = 'block';
+    homePage.style.display = 'none';
+}
+
+// Home Page
+function showHome(){
+    userName = document.getElementById('username').value;
+
+    signInPage.style.display = 'none';
+    signUpPage.style.display = 'none';
+    homePage.style.display = 'flex';
+}
+
 
 // Hora actual
 function getCurrentTime() {
@@ -155,24 +183,24 @@ function sendMessage() {
         addMessageToChat(message, 'Me', 'msg')
 
         messageInput.value = '';
-        socket.emit('sendMessage', message, 'User');
+        socket.emit('sendMessage', message, userName);
     }
 }
 
 // Enviar Sticker
 function attachSticker(stickerSrc) {
     addMessageToChat(stickerSrc, 'Me', 'sticker');
-    socket.emit('attachSticker', stickerSrc, 'User');
+    socket.emit('attachSticker', stickerSrc, userName);
 }
 
 // Enviar escribiendo
-function writing(user) {
+function writing() {
     // Si el usuario ya está escribiendo, reiniciar el temporizador y no hacer nada más
     if (isWriting) {
         clearTimeout(typingTimer); 
         typingTimer = setTimeout(function() {
             isWriting = false;
-            socket.emit('stopWriting', user);
+            socket.emit('stopWriting', userName);
         }, 2500); // 2500 milisegundos
         return;
     }
@@ -181,8 +209,8 @@ function writing(user) {
 
     typingTimer = setTimeout(function() {
         isWriting = false;
-        socket.emit('stopWriting', user);
+        socket.emit('stopWriting', userName);
     }, 2500); 
 
-    socket.emit('writing', user);
+    socket.emit('writing', userName);
 }
