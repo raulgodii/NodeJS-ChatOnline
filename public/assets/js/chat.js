@@ -9,6 +9,10 @@ socket.on('sendMessage', (response) => {
     var hora = fechaActual.getHours();
     var minutos = fechaActual.getMinutes();
 
+    if (minutos < 10) {
+        minutos = "0" + minutos;
+    }
+
     var horaActual = hora + ':' + minutos;
 
     const messageContent = `
@@ -71,6 +75,10 @@ socket.on('attachSticker', (stickerSrc, user) => {
     var hora = fechaActual.getHours();
     var minutos = fechaActual.getMinutes();
 
+    if (minutos < 10) {
+        minutos = "0" + minutos;
+    }
+
     var horaActual = hora + ':' + minutos;
 
     chat.innerHTML += `
@@ -127,6 +135,10 @@ function sendMessage() {
 
         var hora = fechaActual.getHours();
         var minutos = fechaActual.getMinutes();
+
+        if (minutos < 10) {
+            minutos = "0" + minutos;
+        }
 
         var horaActual = hora + ':' + minutos;
 
@@ -185,6 +197,10 @@ function attachSticker(stickerSrc) {
 
     var hora = fechaActual.getHours();
     var minutos = fechaActual.getMinutes();
+
+    if (minutos < 10) {
+        minutos = "0" + minutos;
+    }
 
     var horaActual = hora + ':' + minutos;
 
