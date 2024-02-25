@@ -233,6 +233,28 @@ socket.on('userList', (response) => {
     });
 });
 
+// User join to the chat
+socket.on('newUser', (user) => {
+    chat.innerHTML += `
+    <!-- Separator -->
+        <div class="separator">
+            <span class="separator-title fs-7 ls-1">'${user}' has joined the chat</span>
+        </div>
+    <!-- Separator -->
+    `;
+});
+
+// User entry to the chat
+socket.on('leftUser', (user) => {
+    chat.innerHTML += `
+    <!-- Separator -->
+        <div class="separator">
+            <span class="separator-title fs-7 ls-1">'${user}' has left the chat</span>
+        </div>
+    <!-- Separator -->
+    `;
+});
+
 // Recibir mensaje
 socket.on('sendMessage', (response) => {
     response = JSON.parse(response);

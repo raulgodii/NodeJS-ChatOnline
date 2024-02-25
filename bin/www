@@ -51,6 +51,8 @@ io.on('connection', (socket) => {
     io.emit('userList', response);
 
     io.emit('usersConnected', usersConnected);
+
+    socket.broadcast.emit('leftUser', user.name);
   });
 
   socket.on('sendMessage', (msg, user) => {
@@ -83,6 +85,7 @@ io.on('connection', (socket) => {
     });
 
     response = JSON.stringify(users);
+    socket.broadcast.emit('newUser', user);
     io.emit('userList', response);
   });
 
