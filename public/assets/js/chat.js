@@ -12,6 +12,19 @@ function getCurrentTime() {
     return hora + ':' + minutos;
 }
 
+// Iniciales del nombre
+function getInitials(name) {
+    const words = name.split(' ');
+
+    let initials = words[0].charAt(0).toUpperCase();
+
+    if (words.length > 1) {
+        initials += words[1].charAt(0).toUpperCase();
+    }
+
+    return initials;
+}
+
 // Plantilla mensaje
 function addMessageToChat(data, user, type = 'msg', self = true) {
     var horaActual = getCurrentTime();
@@ -65,10 +78,10 @@ function addMessageToChat(data, user, type = 'msg', self = true) {
 
             <div class="message-info">
                 <div class="avatar avatar-sm">
-                    <span class="avatar-label bg-soft-success text-success fs-6">${self ? 'ME' : 'US'}</span>
+                    <span class="avatar-label bg-soft-success text-success fs-6">${self ? 'ME' : getInitials(user)}</span>
                 </div>
                 <div>
-                    <h6 class="mb-0">${self ? 'Me' : 'User'}</h6>
+                    <h6 class="mb-0">${user}</h6>
                     <small class="text-muted">${horaActual}
                         <i class="ri-check-double-line align-bottom text-success fs-5"></i>
                     </small>
