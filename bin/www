@@ -53,6 +53,11 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('sendMessage', response);
   });
 
+  socket.on('attachSticker', (stickerSrc, user) => {
+    console.log("llega")
+    socket.broadcast.emit('attachSticker', stickerSrc, user);
+  });
+
 });
 
 /**
