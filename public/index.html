@@ -449,7 +449,7 @@
                                     <ul class="list-unstyled js-contact-list mb-0">
                                         <!-- Chat Link 1 -->
                                         <li class="card contact-item active mb-3">
-                                            <a href="#" class="contact-link"></a>
+                                            <a onclick="openChat()" href="#" class="contact-link"></a>
                                             <div class="card-body">
                                                 <div class="d-flex align-items-center">
                                                     <!-- Avatar -->
@@ -476,7 +476,7 @@
                                             <div
                                                 class="card-footer d-flex align-items-center justify-content-between overflow-hidden">
                                                 <h5 class="mb-0 text-truncate">General</h5>
-                                                <p class="mb-0 small text-muted text-nowrap">35 Members</p>
+                                                <p class="mb-0 small text-muted text-nowrap" id="members">35 Members</p>
                                             </div>
                                         </li>
                                         <!-- Chat Link 1 -->
@@ -579,7 +579,7 @@
         <!-- Sidebar -->
 
         <!-- Main Content -->
-        <div class="main main-visible overflow-hidden h-100">
+        <div id="group1" class="main main-visible overflow-hidden h-100">
             <div class="chat d-flex flex-row h-100">
                 <!-- Chat -->
                 <div class="chat-body h-100 w-100 d-flex flex-column">

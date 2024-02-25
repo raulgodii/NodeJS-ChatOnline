@@ -155,6 +155,14 @@ function addMessageToChat(data, user, type = 'msg', self = true) {
     chat.innerHTML += messageContent;
 }
 
+function openChat(){
+    group = document.getElementById('group1');
+    if (group.classList.contains("main-visible")) {
+        group.classList.remove("main-visible");
+    } else {
+        group.classList.add("main-visible");
+    }
+}
 
 /** ---|| RECIBIR ||--- */
 // Usuarios conectados
@@ -167,6 +175,9 @@ socket.on('usersConnected', (usersConnected) => {
 // Lista de usuarios conectados
 socket.on('userList', (response) => {
     response = JSON.parse(response);
+
+    members = document.getElementById('members');
+    members.innerHTML = response.length + ' Members';
 
     userList.innerHTML = '';
 
@@ -250,6 +261,8 @@ function sendMessage() {
         addMessageToChat(message, 'Me', 'msg')
 
         messageInput.value = '';
+        isWriting = false;
+        socket.emit('stopWriting', userName);
         socket.emit('sendMessage', message, userName);
     }
 }
