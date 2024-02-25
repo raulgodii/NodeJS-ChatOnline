@@ -28,11 +28,24 @@ function showSignUp(){
 function showHome(){
     userName = document.getElementById('username').value;
 
-    signInPage.style.display = 'none';
-    signUpPage.style.display = 'none';
-    homePage.style.display = 'flex';
+    if(validateUserName(userName)){
+        signInPage.style.display = 'none';
+        signUpPage.style.display = 'none';
+        homePage.style.display = 'flex';
+    } else {
+        document.getElementById('errorSignIn').innerHTML = 'Invalid username'
+    }
 }
 
+function validateUserName(username) {
+    var regex = /^[a-zA-Z0-9]+$/;
+
+    if (!username || username.trim() === '' || !regex.test(username)) {
+        return false; 
+    }
+
+    return true; 
+}
 
 // Hora actual
 function getCurrentTime() {
