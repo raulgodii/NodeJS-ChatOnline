@@ -47,14 +47,16 @@ io.on('connection', (socket) => {
         user.online = false;
     }
 
+    response = JSON.stringify(users);
+    io.emit('userList', response);
+
     io.emit('usersConnected', usersConnected);
   });
 
   socket.on('sendMessage', (msg, user) => {
     let response = {
       msg: msg,
-      user: user,
-      online: true
+      user: user
     };
 
     response = JSON.stringify(response);
@@ -76,7 +78,8 @@ io.on('connection', (socket) => {
   socket.on('userList', (user) => {
     users.push({
       uid: socket.id,
-      name: user
+      name: user,
+      online: true
     });
 
     response = JSON.stringify(users);

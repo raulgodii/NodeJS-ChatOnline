@@ -166,9 +166,9 @@ socket.on('usersConnected', (usersConnected) => {
 
 // Lista de usuarios conectados
 socket.on('userList', (response) => {
-    console.log(response)
     response = JSON.parse(response);
-    
+
+    userList.innerHTML = '';
 
     response.forEach(user => {
         userElement = document.createElement('li');
@@ -176,9 +176,9 @@ socket.on('userList', (response) => {
         userElement.innerHTML = `<div class="row align-items-center gx-4">
         <!-- Avatar -->
         <div class="col-auto">
-            <div class="avatar avatar-sm avatar-online">
+            <div class="avatar avatar-sm ${user.online ? 'avatar-online':''}">
                 <span
-                    class="avatar-label bg-soft-success text-success fs-6">JD</span>
+                    class="avatar-label bg-soft-success text-success fs-6">${getInitials(user.name)}</span>
             </div>
         </div>
         <!-- Avatar -->
@@ -186,7 +186,7 @@ socket.on('userList', (response) => {
         <!-- Text -->
         <div class="col overflow-hidden">
             <h6 class="text-truncate mb-1">${user.name}</h6>
-            <p class="text-success mb-0 fs-6">Online</p>
+            <p class=" ${user.online ? 'text-success':'text-muted'}  mb-0 fs-6">${user.online ? 'Online':'Disconnected'}</p>
         </div>
         <!-- Text -->
 
