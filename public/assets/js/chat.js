@@ -1,6 +1,11 @@
 let chat = document.getElementById("chat");
 const socket = io();
 
+const messageInput = document.getElementById("message").addEventListener('input', () => (writing('user')));
+
+let typingTimer;
+let isWriting = false;
+
 // Hora actual
 function getCurrentTime() {
     var fechaActual = new Date();
@@ -42,10 +47,23 @@ function addMessageToChat(data, user, type = 'msg', self = true) {
                 <img class='sticker' src='assets/img/stickers/${data}'></img>
             `
             break;
+        case 'writing':
+            message = `
+                <div class="message-content">
+                    <div>Writing
+                        <div class="type-indicator">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            `
+            break;
     }
 
     var messageContent = `
-        <div class="message ${self ? 'self' : ''}">
+        <div ${type === 'writing' ? `id=${user}Writing` : ''} class="message ${self ? 'self' : ''}">
             <div class="message-wrap">                                    
                 <div class="message-item">
 
@@ -114,6 +132,18 @@ socket.on('attachSticker', (stickerSrc, user) => {
     addMessageToChat(stickerSrc, user, 'sticker', false);
 });
 
+// Recibir escribiendo
+socket.on('writing', (user) => {
+    addMessageToChat('', user, 'writing', false);
+});
+
+// Recibir dejar de escribir
+socket.on('stopWriting', (user) => {
+    var writingElement = document.getElementById(user+'Writing');
+
+    writingElement.remove();
+});
+
 
 /** ---|| ENVIAR ||--- */
 // Enviar mensaje
@@ -133,4 +163,26 @@ function sendMessage() {
 function attachSticker(stickerSrc) {
     addMessageToChat(stickerSrc, 'Me', 'sticker');
     socket.emit('attachSticker', stickerSrc, 'User');
+}
+
+// Enviar escribiendo
+function writing(user) {
+    // Si el usuario ya está escribiendo, reiniciar el temporizador y no hacer nada más
+    if (isWriting) {
+        clearTimeout(typingTimer); 
+        typingTimer = setTimeout(function() {
+            isWriting = false;
+            socket.emit('stopWriting', user);
+        }, 2500); // 2500 milisegundos
+        return;
+    }
+
+    isWriting = true;
+
+    typingTimer = setTimeout(function() {
+        isWriting = false;
+        socket.emit('stopWriting', user);
+    }, 2500); 
+
+    socket.emit('writing', user);
 }
