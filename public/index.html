@@ -54,20 +54,13 @@
             justify-content: center;
         }
 
-        .avatar {
-            color: rgb(242, 242, 242) !important;
+        .avatar-filter {
             height: 3.6rem;
             width: 3.6rem;
             margin: 0.2rem;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-        }
-
-        .rating-form-2 svg {
-            height: 3rem;
-            width: 3rem;
-            margin: 0.5rem;
         }
 
         #radios label {
@@ -97,7 +90,7 @@
             border: #fff 1px solid;
         }
 
-        .avatar {
+        .avatar-filter {
             filter: opacity(80%) blur(1px) brightness(90%) grayscale(20%);
             /* Aplicar varios filtros al texto */
             transition: filter 0.3s ease;
@@ -150,42 +143,42 @@
                                         <label for="avatar-input1" class="lb">
                                             <input type="radio" name="rating" class="avatar-input" id="avatar-input1"
                                                 value="super-happy">
-                                            <div class="avatar me-4">
+                                            <div class="avatar avatar-filter me-4">
                                                 <span class="avatar-label bg-soft-success text-success">ME</span>
                                             </div>
                                         </label>
                                         <label for="avatar-input2" class="lb">
                                             <input type="radio" name="rating" class="avatar-input" id="avatar-input2"
                                                 value="neutral">
-                                            <div class="avatar me-4">
+                                            <div class="avatar avatar-filter me-4">
                                                 <span class="avatar-label bg-info text-white">ME</span>
                                             </div>
                                         </label>
                                         <label for="avatar-input3" class="lb">
                                             <input type="radio" name="rating" class="avatar-input" id="avatar-input3"
                                                 value="super-sad">
-                                            <div class="avatar me-4">
+                                            <div class="avatar avatar-filter me-4">
                                                 <span class="avatar-label bg-soft-primary text-primary">ME</span>
                                             </div>
                                         </label>
                                         <label for="avatar-input4" class="lb">
                                             <input type="radio" name="rating" class="avatar-input" id="avatar-input4"
                                                 value="super-sad">
-                                            <div class="avatar me-4">
+                                            <div class="avatar avatar-filter me-4">
                                                 <span class="avatar-label bg-soft-info text-info">ME</span>
                                             </div>
                                         </label>
                                         <label for="avatar-input5" class="lb">
                                             <input type="radio" name="rating" class="avatar-input" id="avatar-input5"
                                                 value="super-sad">
-                                            <div class="avatar me-4">
+                                            <div class="avatar avatar-filter me-4">
                                                 <span class="avatar-label bg-danger text-white">ME</span>
                                             </div>
                                         </label>
                                         <label id="avatar-div" style="display: none;" for="avatar-input6" class="lb">
                                             <input type="radio" name="rating" class="avatar-input" id="avatar-input6"
-                                                value="super-sad" checked>
-                                            <div class="avatar me-4">
+                                                value="super-sad">
+                                            <div class="avatar avatar-filter me-4">
                                                 <span id="avatar-label" class="avatar-label"></span>
                                             </div>
                                         </label>
@@ -1436,7 +1429,7 @@
                                 <div class="col-auto">
                                     <div class="form-check form-switch">
                                         <input class="form-check-input" type="checkbox" id="switch-active-status"
-                                            checked>
+                                            >
                                     </div>
                                 </div>
                             </div>

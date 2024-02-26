@@ -29,7 +29,7 @@ function showSignUp() {
 function showHome() {
     userName = document.getElementById('username').value;
 
-    if (validateUserName(userName)) {
+    if (validateUserName(userName) && validateAvatar()) {
         signInPage.style.display = 'none';
         signUpPage.style.display = 'none';
         homePage.style.display = 'flex';
@@ -40,6 +40,20 @@ function showHome() {
     }
 }
 
+// Validar avatar inicio de sesión
+function validateAvatar() {
+    var avatarInputs = document.querySelectorAll('.avatar-input');
+
+    for (var i = 0; i < avatarInputs.length; i++) {
+        if ((avatarInputs[i].type === 'radio' || avatarInputs[i].type === 'file') && avatarInputs[i].checked) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// Validar nombre usuario inicio de sesión
 function validateUserName(username) {
     var regex = /^[a-zA-Z0-9]+$/;
 
@@ -171,6 +185,7 @@ function scrollToBottom() {
     chatContent.scrollTop = chatContent.scrollHeight;
 }
 
+// Actulizar avatar en el sign in
 function updateAvatarLabel(input) {
     const label = document.getElementById('avatar-label');
     const div = document.getElementById('avatar-div');
