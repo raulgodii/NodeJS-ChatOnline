@@ -51,8 +51,10 @@ io.on('connection', (socket) => {
     io.emit('userList', response);
 
     io.emit('usersConnected', usersConnected);
-
-    socket.broadcast.emit('leftUser', user.name);
+    
+    if(user){
+      socket.broadcast.emit('leftUser', user.name);
+    }
   });
 
   socket.on('sendMessage', (msg, user) => {

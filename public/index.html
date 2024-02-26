@@ -27,6 +27,85 @@
         .chat-content {
             scroll-behavior: smooth;
         }
+
+        .rating {
+            cursor: pointer;
+        }
+
+        .rating-container {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            padding: 0.4rem 0.8rem;
+            width: 100%;
+        }
+
+        .rating {
+            padding: 0.4rem 0.4rem 0.1rem 0.4rem;
+            border-radius: 2.2rem;
+        }
+
+        .rating-form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .avatar {
+            color: rgb(242, 242, 242) !important;
+            height: 3.6rem;
+            width: 3.6rem;
+            margin: 0.2rem;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .rating-form-2 svg {
+            height: 3rem;
+            width: 3rem;
+            margin: 0.5rem;
+        }
+
+        #radios label {
+            position: relative;
+        }
+
+        .super-happy,
+        [type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .input,
+        [type="radio"]+svg {
+            -webkit-transition: all 0.2s;
+            transition: all 0.2s;
+        }
+
+
+        .avatar-input[class="avatar-input"]:hover+div,
+        .avatar-input[class="avatar-input"]:checked+div,
+        .avatar-input[class="avatar-input"]:focus+div {
+            filter: none;
+        }
+
+        .avatar-input[class="avatar-input"]:checked+div>span{
+            border: #fff 1px solid;
+        }
+
+        .avatar {
+            filter: opacity(80%) blur(1px) brightness(90%) grayscale(20%);
+            /* Aplicar varios filtros al texto */
+            transition: filter 0.3s ease;
+            /* Agregar una transición para suavizar el cambio */
+        }
+
+        /* Cuando el elemento está en hover */
+        
     </style>
 </head>
 
@@ -57,6 +136,53 @@
                                         placeholder="Enter your username">
                                 </div>
                                 <!-- Username -->
+
+                                <div class=" mb-4 rating">
+                                    <label class="mb-2" for="avatar">Avatar</label>
+                                    <div class="rating-form">
+                                        <label for="avatar-input1" class="lb">
+                                            <input type="radio" name="rating" class="avatar-input" id="avatar-input1"
+                                                value="super-happy">
+                                            <div class="avatar me-4">
+                                                <span class="avatar-label bg-soft-success text-success">ME</span>
+                                            </div>
+                                        </label>
+                                        <label for="avatar-input2" class="lb">
+                                            <input type="radio" name="rating" class="avatar-input" id="avatar-input2"
+                                                value="neutral">
+                                            <div class="avatar me-4">
+                                                <span class="avatar-label bg-info text-white">ME</span>
+                                            </div>
+                                        </label>
+                                        <label for="avatar-input3" class="lb">
+                                            <input type="radio" name="rating" class="avatar-input" id="avatar-input3"
+                                                value="super-sad">
+                                            <div class="avatar me-4">
+                                                <span class="avatar-label bg-soft-primary text-primary">ME</span>
+                                            </div>
+                                        </label>
+                                        <label for="avatar-input4" class="lb">
+                                            <input type="radio" name="rating" class="avatar-input" id="avatar-input4"
+                                                value="super-sad">
+                                            <div class="avatar me-4">
+                                                <span class="avatar-label bg-soft-info text-info">ME</span>
+                                            </div>
+                                        </label>
+                                        <label for="avatar-input5" class="lb">
+                                            <input type="radio" name="rating" class="avatar-input" id="avatar-input5"
+                                                value="super-sad">
+                                            <div class="avatar me-4">
+                                                <span class="avatar-label bg-danger text-white">ME</span>
+                                            </div>
+                                        </label>
+                                        <label for="avatar-input6" class="lb">
+                                            <input type="file" name="rating" class="avatar-input visually-hidden" id="avatar-input6" value="super-sad">
+                                            <div style="filter: none;" class="avatar me-4">
+                                                <span class="avatar-label text-white">+</span>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
 
                                 <!-- Remember -->
                                 <div class="d-flex justify-content-between mb-4">
