@@ -6,7 +6,7 @@ const signInPage = document.getElementById('signIn');
 const signUpPage = document.getElementById('signUp');
 const homePage = document.getElementById('home');
 const userList = document.getElementById('usersList');
-let userName;
+let user = {};
 
 let typingTimer;
 let isWriting = false;
@@ -27,18 +27,26 @@ function showSignUp() {
 
 // Home Page
 function showHome() {
-    userName = document.getElementById('username').value;
+    user.name = document.getElementById('username').value;
+    user.name = document.getElementById('username').value;
 
-    if (validateUserName(userName) && validateAvatar()) {
+    if (validateUserName(user.name) && validateAvatar()) {
+        avatares = document.querySelectorAll('.avatar-input');
+        avatares.forEach(function (avatar) {
+            if (avatar.checked) {
+                user.avatar = avatar.value;
+            }
+        });
+
         signInPage.style.display = 'none';
         signUpPage.style.display = 'none';
         homePage.style.display = 'flex';
 
-        socket.emit('userList', userName);
+        socket.emit('userList', user.name);
     } else {
         errorUserName = document.getElementById('errorUserName');
-        errorAvatar= document.getElementById('errorAvatar');
-        validateUserName(userName) ? errorUserName.innerHTML = '' : errorUserName.innerHTML = 'Invalid username';
+        errorAvatar = document.getElementById('errorAvatar');
+        validateUserName(user.name) ? errorUserName.innerHTML = '' : errorUserName.innerHTML = 'Invalid username';
         validateAvatar() ? errorAvatar.innerHTML = '' : errorAvatar.innerHTML = 'Select avatar';
     }
 }
@@ -173,7 +181,7 @@ function addMessageToChat(data, user, type = 'msg', self = true) {
 }
 
 // Open chat from panel
-function openChat(){
+function openChat() {
     group = document.getElementById('group1');
     if (group.classList.contains("main-visible")) {
         group.classList.remove("main-visible");
@@ -231,7 +239,7 @@ socket.on('userList', (response) => {
         userElement.innerHTML = `<div class="row align-items-center gx-4">
         <!-- Avatar -->
         <div class="col-auto">
-            <div class="avatar avatar-sm ${user.online ? 'avatar-online':''}">
+            <div class="avatar avatar-sm ${user.online ? 'avatar-online' : ''}">
                 <span
                     class="avatar-label bg-soft-success text-success fs-6">${getInitials(user.name)}</span>
             </div>
@@ -241,7 +249,7 @@ socket.on('userList', (response) => {
         <!-- Text -->
         <div class="col overflow-hidden">
             <h6 class="text-truncate mb-1">${user.name}</h6>
-            <p class=" ${user.online ? 'text-success':'text-muted'}  mb-0 fs-6">${user.online ? 'Online':'Disconnected'}</p>
+            <p class=" ${user.online ? 'text-success' : 'text-muted'}  mb-0 fs-6">${user.online ? 'Online' : 'Disconnected'}</p>
         </div>
         <!-- Text -->
 
@@ -334,8 +342,8 @@ function sendMessage() {
 
         messageInput.value = '';
         isWriting = false;
-        socket.emit('stopWriting', userName);
-        socket.emit('sendMessage', message, userName);
+        socket.emit('stopWriting', user.name);
+        socket.emit('sendMessage', message, user.name);
 
         scrollToBottom();
     }
@@ -344,7 +352,7 @@ function sendMessage() {
 // Enviar Sticker
 function attachSticker(stickerSrc) {
     addMessageToChat(stickerSrc, 'Me', 'sticker');
-    socket.emit('attachSticker', stickerSrc, userName);
+    socket.emit('attachSticker', stickerSrc, user.name);
 
     scrollToBottom();
 }
@@ -356,7 +364,7 @@ function writing() {
         clearTimeout(typingTimer);
         typingTimer = setTimeout(function () {
             isWriting = false;
-            socket.emit('stopWriting', userName);
+            socket.emit('stopWriting', user.name);
         }, 2500); // 2500 milisegundos
         return;
     }
@@ -365,8 +373,8 @@ function writing() {
 
     typingTimer = setTimeout(function () {
         isWriting = false;
-        socket.emit('stopWriting', userName);
+        socket.emit('stopWriting', user.name);
     }, 2500);
 
-    socket.emit('writing', userName);
+    socket.emit('writing', user.name);
 }
