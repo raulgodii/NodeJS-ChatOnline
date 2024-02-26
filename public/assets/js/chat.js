@@ -36,7 +36,10 @@ function showHome() {
 
         socket.emit('userList', userName);
     } else {
-        document.getElementById('errorSignIn').innerHTML = 'Invalid username'
+        errorUserName = document.getElementById('errorUserName');
+        errorAvatar= document.getElementById('errorAvatar');
+        validateUserName(userName) ? errorUserName.innerHTML = '' : errorUserName.innerHTML = 'Invalid username';
+        validateAvatar() ? errorAvatar.innerHTML = '' : errorAvatar.innerHTML = 'Select avatar';
     }
 }
 
@@ -189,12 +192,12 @@ function scrollToBottom() {
 function updateAvatarLabel(input) {
     const label = document.getElementById('avatar-label');
     const div = document.getElementById('avatar-div');
-    const avInput = document.getElementById('avatar-div');
+    const avInput = document.getElementById('avatar-input6');
     if (input.files && input.files[0]) {
         const reader = new FileReader();
         reader.onload = function (e) {
             label.style.backgroundImage = `url(${e.target.result})`;
-            avInput.checked = 'true';
+            avInput.checked = true;
             div.style.display = 'block';
         }
         reader.readAsDataURL(input.files[0]);

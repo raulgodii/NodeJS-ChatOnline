@@ -28,10 +28,6 @@
             scroll-behavior: smooth;
         }
 
-        .rating {
-            cursor: pointer;
-        }
-
         .rating-container {
             display: -webkit-box;
             display: -ms-flexbox;
@@ -55,8 +51,6 @@
         }
 
         .avatar-filter {
-            height: 3.6rem;
-            width: 3.6rem;
             margin: 0.2rem;
             align-items: center;
             justify-content: center;
@@ -134,6 +128,10 @@
                                     <input type="text" id="username"
                                         class="form-control form-control-solid form-control-lg"
                                         placeholder="Enter your username">
+                                    <!-- Text -->
+                                    <p id="errorUserName" class="text-center mt-1 mb-0" style="color: red;">
+                                    </p>
+                                    <!-- Text -->
                                 </div>
                                 <!-- Username -->
 
@@ -143,54 +141,58 @@
                                         <label for="avatar-input1" class="lb">
                                             <input type="radio" name="rating" class="avatar-input" id="avatar-input1"
                                                 value="super-happy">
-                                            <div class="avatar avatar-filter me-4">
+                                            <div class="avatar avatar-filter">
                                                 <span class="avatar-label bg-soft-success text-success">ME</span>
                                             </div>
                                         </label>
                                         <label for="avatar-input2" class="lb">
                                             <input type="radio" name="rating" class="avatar-input" id="avatar-input2"
                                                 value="neutral">
-                                            <div class="avatar avatar-filter me-4">
+                                            <div class="avatar avatar-filter">
                                                 <span class="avatar-label bg-info text-white">ME</span>
                                             </div>
                                         </label>
                                         <label for="avatar-input3" class="lb">
                                             <input type="radio" name="rating" class="avatar-input" id="avatar-input3"
                                                 value="super-sad">
-                                            <div class="avatar avatar-filter me-4">
+                                            <div class="avatar avatar-filter">
                                                 <span class="avatar-label bg-soft-primary text-primary">ME</span>
                                             </div>
                                         </label>
                                         <label for="avatar-input4" class="lb">
                                             <input type="radio" name="rating" class="avatar-input" id="avatar-input4"
                                                 value="super-sad">
-                                            <div class="avatar avatar-filter me-4">
+                                            <div class="avatar avatar-filter">
                                                 <span class="avatar-label bg-soft-info text-info">ME</span>
                                             </div>
                                         </label>
                                         <label for="avatar-input5" class="lb">
                                             <input type="radio" name="rating" class="avatar-input" id="avatar-input5"
                                                 value="super-sad">
-                                            <div class="avatar avatar-filter me-4">
+                                            <div class="avatar avatar-filter">
                                                 <span class="avatar-label bg-danger text-white">ME</span>
                                             </div>
                                         </label>
                                         <label id="avatar-div" style="display: none;" for="avatar-input6" class="lb">
                                             <input type="radio" name="rating" class="avatar-input" id="avatar-input6"
                                                 value="super-sad">
-                                            <div class="avatar avatar-filter me-4">
+                                            <div class="avatar avatar-filter">
                                                 <span id="avatar-label" class="avatar-label"></span>
                                             </div>
                                         </label>
                                         <label for="avatar-input7" class="lb">
-                                            <input type="file" accept="image/*" name="rating" class="avatar-input visually-hidden"
-                                                id="avatar-input7" value="super-sad" onchange="updateAvatarLabel(this)">
-                                            <div style="filter: none;" class="avatar me-4">
-                                                <span
-                                                    class="avatar-label">+</span>
+                                            <input type="file" accept="image/*" name="rating"
+                                                class="avatar-input visually-hidden" id="avatar-input7"
+                                                value="super-sad" onchange="updateAvatarLabel(this)">
+                                            <div style="filter: none;" class="avatar avatar-filter">
+                                                <span class="avatar-label">+</span>
                                             </div>
                                         </label>
                                     </div>
+                                    <!-- Text -->
+                                    <p id="errorAvatar" class="text-center mb-0" style="color: red;">
+                                    </p>
+                                    <!-- Text -->
                                 </div>
 
                                 <!-- Remember -->
@@ -212,12 +214,6 @@
                                 <!-- Button -->
                             </div>
                             <!-- Form -->
-
-                            <!-- Text -->
-                            <p id="errorSignIn" class="text-center mb-0" style="color: red;">
-
-                            </p>
-                            <!-- Text -->
 
                             <!-- Text -->
                             <p class="text-center mb-0">
@@ -1428,8 +1424,7 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" id="switch-active-status"
-                                            >
+                                        <input class="form-check-input" type="checkbox" id="switch-active-status">
                                     </div>
                                 </div>
                             </div>
