@@ -34,30 +34,10 @@ function showHome() {
         avatares = document.querySelectorAll('.avatar-input');
         avatares.forEach(function (avatar) {
             if (avatar.checked) {
+                console.log(avatar.value)
                 user.avatar = avatar.value;
             }
         });
-
-        const fileInput = document.getElementById('avatar-input7');
-        const endpoint = 'http://127.0.0.1:3000/upload';
-
-        const file = fileInput.files[0];
-        const formData = new FormData();
-        formData.append('file', file);
-        fetch(endpoint, {
-            method: 'POST',
-            body: formData
-        })
-            .then(data => {
-                console.log(data);
-                alert('File uploaded successfully!');
-                return;
-            })
-            .catch(error => {
-                console.error(error);
-                alert('Error uploading file');
-                return;
-            });
 
         signInPage.style.display = 'none';
         signUpPage.style.display = 'none';
@@ -186,7 +166,7 @@ function addMessageToChat(data, user, type = 'msg', self = true) {
 
             <div class="message-info">
                 <div class="avatar avatar-sm">
-                    <span class="avatar-label ${user.avatar} fs-6">${getInitials(user.name)}</span>
+                    ${user.avatar.startsWith('img:') ? `<span style="background-image: url('assets/img/avatars/${user.avatar.substring(4)}'); ; background-size: cover; background-position: center;" class="avatar-label"></span>` : `<span class="avatar-label ${user.avatar} fs-6">${getInitials(user.name)}</span>`}
                 </div>
                 <div>
                     <h6 class="mb-0">${self ? 'Me' : user.name}</h6>
@@ -223,11 +203,33 @@ function updateAvatarLabel(input) {
     const div = document.getElementById('avatar-div');
     const avInput = document.getElementById('avatar-input6');
 
+    const fileInput = document.getElementById('avatar-input7');
+    const endpoint = 'http://127.0.0.1:3000/upload';
+
+
+
     if (input.files && input.files[0]) {
+
+        const file = fileInput.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+        fetch(endpoint, {
+            method: 'POST',
+            body: formData
+        })
+            .then(data => {
+                console.log(data);
+                avInput.value = 'img:' + file.name;
+            })
+            .catch(error => {
+                console.error(error);
+            });
 
         const reader = new FileReader();
         reader.onload = function (e) {
             label.style.backgroundImage = `url(${e.target.result})`;
+            label.style.backgroundSize = 'cover';
+            label.style.backgroundPosition = 'center';
             avInput.checked = true;
             div.style.display = 'block';
         }
@@ -263,8 +265,7 @@ socket.on('userList', (response) => {
         <!-- Avatar -->
         <div class="col-auto">
             <div class="avatar avatar-sm ${user.online ? 'avatar-online' : ''}">
-                <span
-                    class="avatar-label ${user.avatar} fs-6">${getInitials(user.name)}</span>
+            ${user.avatar.startsWith('img:') ? `<span style="background-image: url('assets/img/avatars/${user.avatar.substring(4)}'); ; background-size: cover; background-position: center;" class="avatar-label"></span>` : `<span class="avatar-label ${user.avatar} fs-6">${getInitials(user.name)}</span>`}
             </div>
         </div>
         <!-- Avatar -->
