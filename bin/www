@@ -84,8 +84,8 @@ io.on('connection', (socket) => {
     users.push({
       uid: socket.id,
       name: user.name,
-      online: true,
-      avatar: user.avatar
+      avatar: user.avatar,
+      online: true
     });
 
     response = JSON.stringify(users);

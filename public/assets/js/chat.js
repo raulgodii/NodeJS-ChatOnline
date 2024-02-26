@@ -186,7 +186,7 @@ function addMessageToChat(data, user, type = 'msg', self = true) {
 
             <div class="message-info">
                 <div class="avatar avatar-sm">
-                    <span class="avatar-label ${user.avatar} fs-6">${self ? 'ME' : getInitials(user.name)}</span>
+                    <span class="avatar-label ${user.avatar} fs-6">${getInitials(user.name)}</span>
                 </div>
                 <div>
                     <h6 class="mb-0">${self ? 'Me' : user.name}</h6>
@@ -264,7 +264,7 @@ socket.on('userList', (response) => {
         <div class="col-auto">
             <div class="avatar avatar-sm ${user.online ? 'avatar-online' : ''}">
                 <span
-                    class="avatar-label bg-soft-success text-success fs-6">${getInitials(user.name)}</span>
+                    class="avatar-label ${user.avatar} fs-6">${getInitials(user.name)}</span>
             </div>
         </div>
         <!-- Avatar -->
