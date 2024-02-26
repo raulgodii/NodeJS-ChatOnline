@@ -42,7 +42,7 @@ function showHome() {
         signUpPage.style.display = 'none';
         homePage.style.display = 'flex';
 
-        socket.emit('userList', user.name);
+        socket.emit('userList', user);
     } else {
         errorUserName = document.getElementById('errorUserName');
         errorAvatar = document.getElementById('errorAvatar');
@@ -132,7 +132,7 @@ function addMessageToChat(data, user, type = 'msg', self = true) {
     }
 
     var messageContent = `
-        <div ${type === 'writing' ? `id=${user}Writing` : ''} class="message ${self ? 'self' : ''}">
+        <div ${type === 'writing' ? `id=${user.name}Writing` : ''} class="message ${self ? 'self' : ''}">
             <div class="message-wrap">                                    
                 <div class="message-item">
 
@@ -165,10 +165,10 @@ function addMessageToChat(data, user, type = 'msg', self = true) {
 
             <div class="message-info">
                 <div class="avatar avatar-sm">
-                    <span class="avatar-label bg-soft-success text-success fs-6">${self ? 'ME' : getInitials(user)}</span>
+                    <span class="avatar-label ${user.avatar} fs-6">${self ? 'ME' : getInitials(user.name)}</span>
                 </div>
                 <div>
-                    <h6 class="mb-0">${user}</h6>
+                    <h6 class="mb-0">${self ? 'Me' : user.name}</h6>
                     <small class="text-muted">${horaActual}
                         <i class="ri-check-double-line align-bottom text-success fs-5"></i>
                     </small>
@@ -304,7 +304,7 @@ socket.on('leftUser', (user) => {
 socket.on('sendMessage', (response) => {
     response = JSON.parse(response);
 
-    addMessageToChat(response.msg, response.user, 'msg', false);
+    addMessageToChat(response.msg, response, 'msg', false);
 
     scrollToBottom();
 });
@@ -338,12 +338,12 @@ function sendMessage() {
     const message = messageInput.value.trim();
 
     if (message !== '') {
-        addMessageToChat(message, 'Me', 'msg')
+        addMessageToChat(message, user, 'msg')
 
         messageInput.value = '';
         isWriting = false;
         socket.emit('stopWriting', user.name);
-        socket.emit('sendMessage', message, user.name);
+        socket.emit('sendMessage', message, user);
 
         scrollToBottom();
     }
@@ -351,8 +351,8 @@ function sendMessage() {
 
 // Enviar Sticker
 function attachSticker(stickerSrc) {
-    addMessageToChat(stickerSrc, 'Me', 'sticker');
-    socket.emit('attachSticker', stickerSrc, user.name);
+    addMessageToChat(stickerSrc, user, 'sticker');
+    socket.emit('attachSticker', stickerSrc, user);
 
     scrollToBottom();
 }
@@ -376,5 +376,5 @@ function writing() {
         socket.emit('stopWriting', user.name);
     }, 2500);
 
-    socket.emit('writing', user.name);
+    socket.emit('writing', user);
 }
