@@ -38,6 +38,27 @@ function showHome() {
             }
         });
 
+        const fileInput = document.getElementById('avatar-input7');
+        const endpoint = 'http://127.0.0.1:3000/upload';
+
+        const file = fileInput.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+        fetch(endpoint, {
+            method: 'POST',
+            body: formData
+        })
+            .then(data => {
+                console.log(data);
+                alert('File uploaded successfully!');
+                return;
+            })
+            .catch(error => {
+                console.error(error);
+                alert('Error uploading file');
+                return;
+            });
+
         signInPage.style.display = 'none';
         signUpPage.style.display = 'none';
         homePage.style.display = 'flex';
@@ -201,7 +222,9 @@ function updateAvatarLabel(input) {
     const label = document.getElementById('avatar-label');
     const div = document.getElementById('avatar-div');
     const avInput = document.getElementById('avatar-input6');
+
     if (input.files && input.files[0]) {
+
         const reader = new FileReader();
         reader.onload = function (e) {
             label.style.backgroundImage = `url(${e.target.result})`;
