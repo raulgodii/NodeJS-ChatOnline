@@ -171,6 +171,25 @@ function scrollToBottom() {
     chatContent.scrollTop = chatContent.scrollHeight;
 }
 
+function updateAvatarLabel(input) {
+    const label = document.getElementById('avatar-label');
+    const div = document.getElementById('avatar-div');
+    const avInput = document.getElementById('avatar-div');
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            label.style.backgroundImage = `url(${e.target.result})`;
+            avInput.checked = 'true';
+            div.style.display = 'block';
+        }
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        label.style.backgroundImage = 'none';
+        label.textContent = '+';
+    }
+}
+
+
 /** ---|| RECIBIR ||--- */
 // Usuarios conectados
 socket.on('usersConnected', (usersConnected) => {
