@@ -32,7 +32,7 @@ function showHome() {
 
     const avInput = document.getElementById('avatar-input6');
     const fileInput = document.getElementById('avatar-input7');
-    const endpoint = 'http://127.0.0.1:3000/upload';
+    const endpoint = 'https://nodejs-chatonline.onrender.com/upload';
 
     if (validateUserName(user.name) && validateAvatar()) {
 
