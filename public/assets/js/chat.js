@@ -32,45 +32,56 @@ function showHome() {
 
     const avInput = document.getElementById('avatar-input6');
     const fileInput = document.getElementById('avatar-input7');
-    const endpoint = 'https://nodejs-chatonline.onrender.com/upload';
+    const endpoint = location.origin + '/upload';
 
     if (validateUserName(user.name) && validateAvatar()) {
 
         const file = fileInput.files[0];
-        const formData = new FormData();
-        formData.append('file', file);
-        fetch(endpoint, {
-            method: 'POST',
-            body: formData
-        })
-            .then(data => {
-
-                console.log(data);
-                avInput.value = 'img:' + file.name;
-
-                avatares = document.querySelectorAll('.avatar-input');
-                avatares.forEach(function (avatar) {
-                    if (avatar.checked) {
-                        console.log(avatar.value)
-                        user.avatar = avatar.value;
-                    }
-                });
-
-                signInPage.style.display = 'none';
-                signUpPage.style.display = 'none';
-                homePage.style.display = 'flex';
-
-                socket.emit('userList', user);
+        if (file) {
+            const formData = new FormData();
+            formData.append('file', file);
+            fetch(endpoint, {
+                method: 'POST',
+                body: formData
             })
-            .catch(error => {
-                console.error(error);
-            });
+                .then(data => {
+
+                    console.log(data);
+                    avInput.value = 'img:' + file.name;
+
+                    updateUserAvatar();
+
+                    socket.emit('userList', user);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        } else {
+            updateUserAvatar();
+
+            socket.emit('userList', user);
+        }
+
+        signInPage.style.display = 'none';
+        signUpPage.style.display = 'none';
+        homePage.style.display = 'flex';
     } else {
         errorUserName = document.getElementById('errorUserName');
         errorAvatar = document.getElementById('errorAvatar');
         validateUserName(user.name) ? errorUserName.innerHTML = '' : errorUserName.innerHTML = 'Invalid username';
         validateAvatar() ? errorAvatar.innerHTML = '' : errorAvatar.innerHTML = 'Select avatar';
     }
+}
+
+// Actualizar el user.avatar
+function updateUserAvatar() {
+    avatares = document.querySelectorAll('.avatar-input');
+    avatares.forEach(function (avatar) {
+        if (avatar.checked) {
+            console.log(avatar.value)
+            user.avatar = avatar.value;
+        }
+    });
 }
 
 // Validar avatar inicio de sesión
