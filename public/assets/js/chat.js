@@ -30,20 +30,41 @@ function showHome() {
     user.name = document.getElementById('username').value;
     user.name = document.getElementById('username').value;
 
+    const avInput = document.getElementById('avatar-input6');
+    const fileInput = document.getElementById('avatar-input7');
+    const endpoint = 'http://127.0.0.1:3000/upload';
+
     if (validateUserName(user.name) && validateAvatar()) {
-        avatares = document.querySelectorAll('.avatar-input');
-        avatares.forEach(function (avatar) {
-            if (avatar.checked) {
-                console.log(avatar.value)
-                user.avatar = avatar.value;
-            }
-        });
 
-        signInPage.style.display = 'none';
-        signUpPage.style.display = 'none';
-        homePage.style.display = 'flex';
+        const file = fileInput.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+        fetch(endpoint, {
+            method: 'POST',
+            body: formData
+        })
+            .then(data => {
 
-        socket.emit('userList', user);
+                console.log(data);
+                avInput.value = 'img:' + file.name;
+
+                avatares = document.querySelectorAll('.avatar-input');
+                avatares.forEach(function (avatar) {
+                    if (avatar.checked) {
+                        console.log(avatar.value)
+                        user.avatar = avatar.value;
+                    }
+                });
+
+                signInPage.style.display = 'none';
+                signUpPage.style.display = 'none';
+                homePage.style.display = 'flex';
+
+                socket.emit('userList', user);
+            })
+            .catch(error => {
+                console.error(error);
+            });
     } else {
         errorUserName = document.getElementById('errorUserName');
         errorAvatar = document.getElementById('errorAvatar');
@@ -203,28 +224,7 @@ function updateAvatarLabel(input) {
     const div = document.getElementById('avatar-div');
     const avInput = document.getElementById('avatar-input6');
 
-    const fileInput = document.getElementById('avatar-input7');
-    const endpoint = 'http://127.0.0.1:3000/upload';
-
-
-
     if (input.files && input.files[0]) {
-
-        const file = fileInput.files[0];
-        const formData = new FormData();
-        formData.append('file', file);
-        fetch(endpoint, {
-            method: 'POST',
-            body: formData
-        })
-            .then(data => {
-                console.log(data);
-                avInput.value = 'img:' + file.name;
-            })
-            .catch(error => {
-                console.error(error);
-            });
-
         const reader = new FileReader();
         reader.onload = function (e) {
             label.style.backgroundImage = `url(${e.target.result})`;
