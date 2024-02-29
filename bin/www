@@ -72,6 +72,10 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('attachSticker', stickerSrc, user);
   });
 
+  socket.on('attachFile', (fileName, user) => {
+    socket.broadcast.emit('attachFile', fileName, user);
+  });
+
   socket.on('writing', (user) => {
     socket.broadcast.emit('writing', user);
   });

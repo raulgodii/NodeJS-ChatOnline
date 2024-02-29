@@ -90,7 +90,6 @@
             transition: filter 0.3s ease;
             /* Agregar una transición para suavizar el cambio */
         }
-
     </style>
 </head>
 
@@ -898,10 +897,13 @@
                                 <!-- Input -->
                                 <div class="col">
                                     <div class="input-group">
-                                        <button class="btn btn-white btn-lg border" type="button"><i
-                                                class="ri-attachment-2"></i></button>
+                                        <label for="attach-file" class="btn btn-white btn-lg border" type="button"><i
+                                                class="ri-attachment-2"></i></label>
                                         <input id="message" type="text" class="form-control form-control-lg"
                                             placeholder="Type message" aria-label="type message">
+                                        <input type="file" accept="image/*" name="file"
+                                            class="visually-hidden" id="attach-file"
+                                            onchange="attachFile()">
                                         <button data-bs-toggle="collapse" data-bs-target="#chat-stickers"
                                             class="btn btn-white btn-lg border" type="button"><i
                                                 class="ri-chat-smile-2-line"></i></button>
@@ -1007,8 +1009,7 @@
                                                 <!-- Avatar -->
                                                 <div class="col-auto">
                                                     <div class="avatar avatar-sm">
-                                                        <span
-                                                            class="avatar-label fs-6">0</span>
+                                                        <span class="avatar-label fs-6">0</span>
                                                     </div>
                                                 </div>
                                                 <!-- Avatar -->

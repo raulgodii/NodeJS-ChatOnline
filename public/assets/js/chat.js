@@ -32,14 +32,15 @@ function showHome() {
 
     const avInput = document.getElementById('avatar-input6');
     const fileInput = document.getElementById('avatar-input7');
-    const endpoint = location.origin + '/upload';
+    const endpoint = location.origin + '/uploadAvatar';
 
     if (validateUserName(user.name) && validateAvatar()) {
 
         const file = fileInput.files[0];
         if (file) {
             const formData = new FormData();
-            formData.append('file', file);
+            const randomFileName = generateRandomFileName(file); // Generar nombre aleatorio
+            formData.append('file', file, randomFileName); // Adjuntar archivo con el nuevo nombre
             fetch(endpoint, {
                 method: 'POST',
                 body: formData
@@ -47,7 +48,7 @@ function showHome() {
                 .then(data => {
 
                     console.log(data);
-                    avInput.value = 'img:' + file.name;
+                    avInput.value = 'img:' + randomFileName;
 
                     updateUserAvatar();
 
@@ -162,6 +163,20 @@ function addMessageToChat(data, user, type = 'msg', self = true) {
                 </div>
             `
             break;
+        case 'file':
+            message = `
+            <div class="message-content">
+            <h6>Shared file: </6>
+            <div class="shared-image-list row align-items-center g-3">
+                <div class="col">
+                    <a class="shared-image" href="./assets/img/files/${data}">
+                        <img class="img-fluid rounded-2" src="./assets/img/files/${data}" alt="preview" data-action="zoom">
+                    </a>
+                </div>
+            </div>
+        </div>
+            `
+            break;
     }
 
     var messageContent = `
@@ -211,6 +226,18 @@ function addMessageToChat(data, user, type = 'msg', self = true) {
     `;
 
     chat.innerHTML += messageContent;
+
+    inicializarMagnificPopup();
+}
+
+// Función para inicializar Magnific Popup
+function inicializarMagnificPopup() {
+    $('.shared-image').magnificPopup({
+        type: 'image',
+        gallery: {
+            enabled: true
+        }
+    });
 }
 
 // Open chat from panel
@@ -229,7 +256,7 @@ function scrollToBottom() {
     chatContent.scrollTop = chatContent.scrollHeight;
 }
 
-// Actulizar avatar en el sign in
+// Actualizar avatar en el sign in
 function updateAvatarLabel(input) {
     const label = document.getElementById('avatar-label');
     const div = document.getElementById('avatar-div');
@@ -251,6 +278,13 @@ function updateAvatarLabel(input) {
     }
 }
 
+// Función para generar un nombre aleatorio para el archivo
+function generateRandomFileName(file) {
+    const timestamp = new Date().getTime();
+    const randomString = Math.random().toString(36).substring(2, 15);
+    const fileExtension = file.name.split('.').pop();
+    return `${randomString}_${timestamp}.${fileExtension}`;
+}
 
 /** ---|| RECIBIR ||--- */
 // Usuarios conectados
@@ -351,6 +385,13 @@ socket.on('attachSticker', (stickerSrc, user) => {
     scrollToBottom();
 });
 
+// Recibir archivo
+socket.on('attachFile', (fileName, user) => {
+    addMessageToChat(fileName, user, 'file', false);
+
+    scrollToBottom();
+});
+
 // Recibir escribiendo
 socket.on('writing', (user) => {
     addMessageToChat('', user, 'writing', false);
@@ -390,6 +431,33 @@ function attachSticker(stickerSrc) {
     socket.emit('attachSticker', stickerSrc, user);
 
     scrollToBottom();
+}
+
+// Adjuntar archivo en el chat
+function attachFile() {
+    const endpoint = location.origin + '/uploadFile';
+    const fileInput = document.getElementById('attach-file');
+    const file = fileInput.files[0];
+    if (file) {
+        const formData = new FormData();
+        const randomFileName = generateRandomFileName(file); // Generar nombre aleatorio
+        formData.append('file', file, randomFileName);
+        fetch(endpoint, {
+            method: 'POST',
+            body: formData
+        })
+            .then(data => {
+                addMessageToChat(randomFileName, user, 'file');
+                console.log(data);
+                socket.emit('attachFile', randomFileName, user);
+                scrollToBottom();
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    } else {
+        console.log("File upload error");
+    }
 }
 
 // Enviar escribiendo
