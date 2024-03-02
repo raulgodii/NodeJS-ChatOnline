@@ -11,6 +11,20 @@ let user = {};
 let typingTimer;
 let isWriting = false;
 
+// Agregar un evento de clic al contenedor principal
+homePage.addEventListener('click', function(event) {
+    // Verificar si el clic fue en un botón de cierre de chat o en el icono dentro del botón
+    var closeButton = event.target.closest('.chat-hide');
+    if (closeButton) {
+        // Encontrar el contenedor del chat correspondiente y ocultarlo
+        var chatC = closeButton.closest('.main');
+        if (chatC) {
+            chatC.classList.remove('main-visible');
+        }
+    }
+});
+
+
 // Sign In Page
 function showSignIn() {
     signInPage.style.display = 'block';
@@ -331,12 +345,356 @@ function inicializarMagnificPopup() {
 
 // Open chat from panel
 function openChat() {
-    group = document.getElementById('group1');
+    const children = homePage.children;
+
+    // Iterar sobre cada elemento hijo
+    for (let i = 0; i < children.length; i++) {
+        if (children[i].id.startsWith('chat-')) {
+            // Ocultar el elemento hijo si cumple la condición
+            children[i].style.display = 'none';
+        }
+    }
+
+    group = document.getElementById('chat-group1');
+
     if (group.classList.contains("main-visible")) {
         group.classList.remove("main-visible");
     } else {
         group.classList.add("main-visible");
     }
+
+    if (group.style.display == 'none') {
+        group.style.display = 'block';
+    }
+}
+
+function openPrivateChat(uid) {
+    group = document.getElementById('chat-group1');
+
+    group.style.display = 'none';
+
+    const children = homePage.children;
+
+    // Iterar sobre cada elemento hijo
+    for (let i = 0; i < children.length; i++) {
+        if (children[i].id.startsWith('chat-')) {
+            // Ocultar el elemento hijo si cumple la condición
+            children[i].style.display = 'none';
+        }
+    }
+
+    chatP = document.getElementById('chat-' + uid);
+
+    if (chatP) {
+        if (chatP.classList.contains("main-visible")) {
+            chatP.classList.remove("main-visible");
+        } else {
+            chatP.classList.add("main-visible");
+        }
+
+        if (chatP.style.display == 'none') {
+            chatP.style.display = 'block';
+        }
+    } else {
+        chatP = document.createElement('div');
+        chatP.id = 'chat-' + uid;
+        chatP.className = 'main main-visible overflow-hidden h-100';
+        chatP.innerHTML = `
+            <div class="chat d-flex flex-row h-100">
+                <!-- Chat -->
+                <div class="chat-body h-100 w-100 d-flex flex-column">
+                    <!-- Chat Header -->
+                    <div class="chat-header d-flex align-items-center border-bottom px-2">
+                        <div class="container-fluid">
+                            <div class="row align-items-center g-0">
+                                <div class="col-8 col-sm-5">
+                                    <div class="d-flex align-items-center">
+                                        <!-- Close Chat Button -->
+                                        <div class="d-block d-xl-none me-3">
+                                            <button class="chat-hide btn btn-icon btn-base btn-sm" type="button">
+                                                <i class="ri-arrow-left-s-line"></i>
+                                            </button>
+                                        </div>
+                                        <!-- Close Chat Button -->
+
+                                        <!-- Avatar -->
+                                        <div class="avatar avatar-sm me-3">
+                                            <span class="avatar-label bg-primary text-white fs-6">G</span>
+                                        </div>
+                                        <!-- Avatar -->
+
+                                        <!-- Text -->
+                                        <div class="flex-grow-1 overflow-hidden">
+                                            <h6 class="d-block text-truncate mb-1">${uid}</h6>
+                                            <p class="d-block text-truncate text-muted fs-6 mb-0"> 0
+                                                online</p>
+                                        </div>
+                                        <!-- Text -->
+                                    </div>
+                                </div>
+
+                                <div class="col-4 col-sm-7">
+                                    <ul class="list-inline text-end mb-0">
+                                        <!-- Search Button -->
+                                        <li class="list-inline-item d-none d-sm-inline-block">
+                                            <button class="btn btn-icon btn-base" type="button" title="Search"
+                                                data-bs-toggle="collapse" data-bs-target="#search-chat"
+                                                aria-expanded="false">
+                                                <i class="ri-search-line"></i>
+                                            </button>
+                                        </li>
+                                        <!-- Search Button -->
+
+                                        <!-- Chat Info Button -->
+                                        <li class="list-inline-item d-none d-sm-inline-block">
+                                            <button class="chat-info-toggle btn btn-icon btn-base" title="Chat info"
+                                                type="button">
+                                                <i class="ri-user-3-line"></i>
+                                            </button>
+                                        </li>
+                                        <!-- Chat Info Button -->
+
+                                        <!-- Dropdown -->
+                                        <li class="list-inline-item">
+                                            <div class="dropdown">
+                                                <button class="btn btn-icon btn-base" type="button" title="Menu"
+                                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="ri-more-fill"></i>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                    <li class="d-block d-sm-none">
+                                                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                                            href="#" data-bs-toggle="collapse"
+                                                            data-bs-target="#search-chat" aria-expanded="false">Search
+                                                            <i class="ri-search-line"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="d-block d-sm-none">
+                                                        <a class="chat-info-toggle dropdown-item d-flex align-items-center justify-content-between"
+                                                            href="#">Chat Info
+                                                            <i class="ri-information-line"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                                            href="#">Archive
+                                                            <i class="ri-archive-line"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                                            href="#">Mute
+                                                            <i class="ri-volume-mute-line"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <div class="dropdown-divider"></div>
+                                                    </li>
+                                                    <li>
+                                                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                                            href="#">Block
+                                                            <i class="ri-forbid-line"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <!-- Dropdown -->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Chat Header -->
+
+                    <!-- Chat Content -->
+                    <div class="chat-content hide-scrollbar h-100">
+                        <!-- Messages -->
+                        <div id="chat-${uid}" class="container-fluid g-0 p-4">
+
+                        </div>
+                        <!-- Messages -->
+
+                        <!-- Scroll Chat to Bottom -->
+                        <div class="js-scroll-to-bottom"></div>
+                        <!-- Scroll Chat to Bottom -->
+                    </div>
+                    <!-- Chat Content -->
+
+                    <!-- Chat Stickers -->
+                    <div>
+                        <div class="border-bottom collapse" id="chat-stickers-${uid}">
+                            <div class="px-1 py-4">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="input-group">
+                                                <img class="sticker" onclick="attachSticker('sticker1.jpg')"
+                                                    class="sticker" src="assets/img/stickers/sticker1.jpg" alt="">
+                                                <img class="sticker" onclick="attachSticker('sticker2.jpg')" class="sticker"
+                                                    src="assets/img/stickers/sticker2.jpg" alt="">
+                                                <img class="sticker" onclick="attachSticker('sticker3.webp')"
+                                                    class="sticker" src="assets/img/stickers/sticker3.webp" alt="">
+                                                <img class="sticker" onclick="attachSticker('sticker4.jpg')"
+                                                    class="sticker" src="assets/img/stickers/sticker4.jpg" alt="">
+                                                <img class="sticker" onclick="attachSticker('sticker5.png')"
+                                                    class="sticker" src="assets/img/stickers/sticker5.png" alt="">
+                                                <img class="sticker" onclick="attachSticker('sticker6.webp')"
+                                                    class="sticker" src="assets/img/stickers/sticker6.webp" alt="">
+                                                <img class="sticker" onclick="attachSticker('sticker7.jpg')"
+                                                    class="sticker" src="assets/img/stickers/sticker7.jpg" alt="">
+                                                <img class="sticker" onclick="attachSticker('sticker8.jpg')"
+                                                    class="sticker" src="assets/img/stickers/sticker8.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Chat Stickers -->
+
+                    <!-- Chat Footer -->
+                    <div class="chat-footer d-flex align-items-center border-top px-2">
+                        <div class="container-fluid">
+                            <div class="row align-items-center g-4">
+                                <!-- Input -->
+                                <div class="col">
+                                    <div class="input-group">
+                                        <label for="attach-file" class="btn btn-white btn-lg border" type="button"><i
+                                                class="ri-attachment-2"></i></label>
+                                        <input id="message-${uid}" type="text" class="form-control form-control-lg"
+                                            placeholder="Type message" aria-label="type message">
+                                        <input type="file" name="file"
+                                            class="visually-hidden" id="attach-file-${uid}"
+                                            onchange="attachFile()">
+                                        <button data-bs-toggle="collapse" data-bs-target="#chat-stickers"
+                                            class="btn btn-white btn-lg border" type="button"><i
+                                                class="ri-chat-smile-2-line"></i></button>
+                                    </div>
+                                </div>
+                                <!-- Input -->
+
+                                <!-- Button -->
+                                <div class="col-auto">
+                                    <ul class="list-inline d-flex align-items-center mb-0">
+                                        <li class="list-inline-item">
+                                            <button onclick="sendMessage()" type="submit"
+                                                class="btn btn-icon btn-primary btn-lg rounded-circle">
+                                                <i class="ri-send-plane-fill"></i>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Button -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Chat Footer -->
+                </div>
+                <!-- Chat -->
+
+                <!-- Chat Info -->
+                <div class="chat-info h-100 border-start">
+                    <div class="d-flex flex-column h-100">
+                        <!-- Header -->
+                        <div class="chat-info-header d-flex align-items-center border-bottom">
+                            <ul class="d-flex justify-content-between align-items-center list-unstyled w-100 mx-4 mb-0">
+                                <!-- Title -->
+                                <li>
+                                    <h3 class="mb-0">Group Info</h3>
+                                </li>
+                                <!-- Title -->
+
+                                <!-- Close Button -->
+                                <li>
+                                    <button class="chat-info-close btn btn-icon btn-base px-0">
+                                        <i class="ri-close-line"></i>
+                                    </button>
+                                </li>
+                                <!-- Close Button -->
+                            </ul>
+                        </div>
+                        <!-- Header -->
+
+                        <!-- Content -->
+                        <div class="hide-scrollbar h-100">
+                            <!-- User Info -->
+                            <div class="text-center p-4 pt-14">
+                                <!-- Avatar -->
+                                <div class="avatar avatar-xl mb-4">
+                                    <span class="avatar-label bg-primary text-white fs-3">G</span>
+                                </div>
+                                <!-- Avatar -->
+
+                                <!-- Text -->
+                                <h5>General</h5>
+                                <!-- Text -->
+
+                                <!-- Text -->
+                                <div class="text-center">
+                                    <span class="text-muted mb-0">Communication on any subject.</span>
+                                </div>
+                                <!-- Text -->
+                            </div>
+                            <!-- User Info -->
+
+                            <!-- Tab Content -->
+                            <div class="tab-content" id="pills-tab-group-content-${uid}">
+                                <!-- Users -->
+                                <div class="tab-pane fade show active" id="pills-users-${uid}" role="tabpanel"
+                                    aria-labelledby="pills-users-tab">
+                                    <ul id="usersList-${uid}" class="list-group list-group-flush">
+                                        <!-- User 1 -->
+                                        <li class="list-group-item py-4">
+                                            <div class="row align-items-center gx-4">
+                                                <!-- Avatar -->
+                                                <div class="col-auto">
+                                                    <div class="avatar avatar-sm">
+                                                        <span class="avatar-label fs-6">0</span>
+                                                    </div>
+                                                </div>
+                                                <!-- Avatar -->
+
+                                                <!-- Text -->
+                                                <div class="col overflow-hidden">
+                                                    <h6 class="text-truncate mb-1">No users</h6>
+                                                </div>
+                                                <!-- Text -->
+                                            </div>
+                                        </li>
+                                        <!-- User 1 -->
+                                    </ul>
+                                </div>
+                                <!-- Users -->
+
+                                <!-- Files -->
+                                <div class="tab-pane fade" id="pills-files-${uid}" role="tabpanel"
+                                    aria-labelledby="pills-files-tab">
+                                    <ul class="list-group list-group-flush" id="fileList-${uid}">
+                                        
+                                    </ul>
+                                </div>
+                                <!-- Files -->
+                            </div>
+                            <!-- Tab Content -->
+                        </div>
+                        <!-- Content -->
+                    </div>
+                </div>
+                <!-- Chat Info -->
+            </div>
+        </div>
+        `;
+        document.getElementById('home').appendChild(chatP);
+    }
+
+    if (group.classList.contains("main-visible")) {
+        group.classList.remove("main-visible");
+    } else {
+        group.classList.add("main-visible");
+    }
+
 }
 
 // Scroll to bottom
@@ -376,7 +734,7 @@ function generateRandomFileName(file) {
 }
 
 // Añdir archivo a lista de archivos del chat
-function addFileToList(file){
+function addFileToList(file) {
     const fileList = document.getElementById('fileList');
     fileList.innerHTML += `
     <!-- File -->
@@ -513,7 +871,7 @@ socket.on('userList', (response) => {
         userElement.className = 'card contact-item mb-3';
         userElement.innerHTML = `
         <!-- Chat Link -->
-            <a href="#" class="contact-link"></a>
+            <a href="#" onclick="openPrivateChat('${user.uid}')" class="contact-link"></a>
             <div class="card-body">
                 <div class="d-flex align-items-center ">
                     <!-- Avatar -->
