@@ -3,7 +3,6 @@ const socket = io();
 
 const messageInput = document.getElementById("message").addEventListener('input', () => (writing('user')));
 const signInPage = document.getElementById('signIn');
-const signUpPage = document.getElementById('signUp');
 const homePage = document.getElementById('home');
 const userList = document.getElementById('usersList');
 const userListDirect = document.getElementById('userListDirect');
@@ -15,14 +14,6 @@ let isWriting = false;
 // Sign In Page
 function showSignIn() {
     signInPage.style.display = 'block';
-    signUpPage.style.display = 'none';
-    homePage.style.display = 'none';
-}
-
-// Sign Up Page
-function showSignUp() {
-    signInPage.style.display = 'none';
-    signUpPage.style.display = 'block';
     homePage.style.display = 'none';
 }
 
@@ -65,7 +56,6 @@ function showHome() {
         }
 
         signInPage.style.display = 'none';
-        signUpPage.style.display = 'none';
         homePage.style.display = 'flex';
     } else {
         errorUserName = document.getElementById('errorUserName');
