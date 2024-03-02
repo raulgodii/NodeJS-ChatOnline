@@ -6,6 +6,7 @@ const signInPage = document.getElementById('signIn');
 const signUpPage = document.getElementById('signUp');
 const homePage = document.getElementById('home');
 const userList = document.getElementById('usersList');
+const userListDirect = document.getElementById('userListDirect');
 let user = {};
 
 let typingTimer;
@@ -457,8 +458,20 @@ socket.on('usersConnected', (usersConnected) => {
 socket.on('userList', (response) => {
     response = JSON.parse(response);
 
+    response.sort((a, b) => {
+        if (a.online && !b.online) {
+            return -1;
+        } else if (!a.online && b.online) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+
     members = document.getElementById('members');
     members.innerHTML = response.length + ' Members';
+
+    userListDirect.innerHTML = '';
 
     userList.innerHTML = '';
 
@@ -503,6 +516,40 @@ socket.on('userList', (response) => {
         <!-- Dropdown -->
     </div>`
         userList.appendChild(userElement)
+    });
+
+    response.forEach(user => {
+        userElement = document.createElement('li');
+        userElement.className = 'card contact-item mb-3';
+        userElement.innerHTML = `
+        <!-- Chat Link -->
+            <a href="#" class="contact-link"></a>
+            <div class="card-body">
+                <div class="d-flex align-items-center ">
+                    <!-- Avatar -->
+                    <div class="avatar ${user.online ? 'avatar-online' : ''} me-4">
+                        <span class="avatar-label">${user.avatar.startsWith('img:') ? `<span style="background-image: url('assets/img/avatars/${user.avatar.substring(4)}'); ; background-size: cover; background-position: center;" class="avatar-label"></span>` : `<span class="avatar-label ${user.avatar} fs-6">${getInitials(user.name)}</span>`}</span>
+                    </div>
+                    <!-- Avatar -->
+
+                    <!-- Content -->
+                    <div class="flex-grow-1 overflow-hidden">
+                        <div class="d-flex align-items-center mb-1">
+                            <h5 class="text-truncate mb-0 me-auto">${user.name}</h5>
+                            <p class="small ${user.online ? 'text-success' : 'text-muted'} text-nowrap ms-4 mb-0">${user.online ? 'Online' : 'Disconnected'}
+                            </p>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <div class="line-clamp me-auto">Tap to chat
+                            </div>
+                            <span class="badge rounded-pill bg-primary ms-2">0</span>
+                        </div>
+                    </div>
+                    <!-- Content -->
+                </div>
+            </div>
+        <!-- Chat Link-->`
+        userListDirect.appendChild(userElement)
     });
 });
 
