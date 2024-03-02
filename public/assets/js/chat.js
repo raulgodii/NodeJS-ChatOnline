@@ -12,7 +12,7 @@ let typingTimer;
 let isWriting = false;
 
 // Agregar un evento de clic al contenedor principal
-homePage.addEventListener('click', function(event) {
+homePage.addEventListener('click', function (event) {
     // Verificar si el clic fue en un botón de cierre de chat o en el icono dentro del botón
     var closeButton = event.target.closest('.chat-hide');
     if (closeButton) {
@@ -33,7 +33,6 @@ function showSignIn() {
 
 // Home Page
 function showHome() {
-    user.name = document.getElementById('username').value;
     user.name = document.getElementById('username').value;
 
     const avInput = document.getElementById('avatar-input6');
@@ -58,6 +57,8 @@ function showHome() {
 
                     updateUserAvatar();
 
+                    updateUserInfo();
+
                     socket.emit('userList', user);
                 })
                 .catch(error => {
@@ -65,6 +66,8 @@ function showHome() {
                 });
         } else {
             updateUserAvatar();
+
+            updateUserInfo();
 
             socket.emit('userList', user);
         }
@@ -77,6 +80,96 @@ function showHome() {
         validateUserName(user.name) ? errorUserName.innerHTML = '' : errorUserName.innerHTML = 'Invalid username';
         validateAvatar() ? errorAvatar.innerHTML = '' : errorAvatar.innerHTML = 'Select avatar';
     }
+}
+
+// Actualizar menu info usuario
+function updateUserInfo() {
+    const sidebarInfo = document.getElementById('sidebar-info');
+
+    sidebarInfo.innerHTML += `
+        <!-- Avatar -->
+            <li class="nav-item" role="presentation">
+                <a class="text-decoration-none" href="#" data-bs-toggle="modal" data-bs-target="#modal-account"
+                    title="Account">
+                    <div class="avatar avatar-online avatar-sm">
+                    ${user.avatar.startsWith('img:') ? `<span style="background-image: url('assets/img/avatars/${user.avatar.substring(4)}'); ; background-size: cover; background-position: center;" class="avatar-label"></span>` : `<span class="avatar-label ${user.avatar} fs-6">${getInitials(user.name)}</span>`}
+                    </div>
+                </a>
+            </li>
+    `;
+
+    modalAccount = document.getElementById('modal-account');
+    modalAccount.innerHTML += `
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="profile text-center">
+                    <div class="profile-img text-primary px-5">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100" fill="currentColor">
+                            <defs>
+                                <style>
+                                    .st1 {
+                                        fill: #fff;
+                                        opacity: 0.1;
+                                    }
+                                </style>
+                            </defs>
+                            <path d="M300,0v80c0,11-9,20-20,20H20C9,100,0,91,0,80V0H300z" />
+                            <path class="st1"
+                                d="M50,71c-16,0-29,13-29,29h10c0-10.5,8.5-19,19-19s19,8.5,19,19h10C79,84,66,71,50,71z" />
+                            <path class="st1"
+                                d="M31.6,0H21.3C21.8,1.6,22,3.3,22,5c0,10.5-8.5,19-19,19c-1,0-2-0.1-3-0.2v10.1C1,34,2,34,3,34c16,0,29-13,29-29
+                                                                                                C32,3.3,31.8,1.6,31.6,0z" />
+                            <path class="st1"
+                                d="M238.5,58C217.3,58,200,75.3,200,96.5c0,1.2,0,2.3,0.2,3.5h10.1c-0.1-1.2-0.2-2.3-0.2-3.5
+                                                                                                c0-15.7,12.8-28.5,28.5-28.5S267,80.8,267,96.5c0,1.2-0.1,2.3-0.2,3.5h10.1c0.1-1.2,0.2-2.3,0.2-3.5C277,75.3,259.7,58,238.5,58z" />
+                            <path class="st1"
+                                d="M299,22c-11,0-20-9-20-20c0-0.7,0-1.3,0.1-2h-10C269,0.7,269,1.3,269,2c0,16.5,13.5,30,30,30c0.3,0,0.7,0,1,0
+                                                                                                V22C299.7,22,299.3,22,299,22z" />
+                        </svg>
+                    </div>
+                    <div class="profile-content">
+                        <!-- Avatar -->
+                        <div class="avatar avatar-lg">
+                            ${user.avatar.startsWith('img:') ? `<span style="background-image: url('assets/img/avatars/${user.avatar.substring(4)}'); ; background-size: cover; background-position: center;" class="avatar-label"></span>` : `<span class="avatar-label ${user.avatar} fs-6">${getInitials(user.name)}</span>`}
+                        </div>
+                        <!-- Avatar -->
+
+                        <!-- Name -->
+                        <h5 class="m-1">${user.name}</h5>
+                        <!-- Name -->
+
+                        <!-- Availability -->
+                        <p class="text-muted">Online</p>
+                        <!-- Availability -->
+                    </div>
+                </div>
+
+                <div class="modal-body p-0">
+                    <ul class="list-group list-group-flush">
+                        <!-- Location -->
+                        <li class="list-group-item p-4">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <h5 class="mb-1">Location</h5>
+                                    <p class="text-muted mb-0">Granada, ES</p>
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-icon btn-light rounded-circle">
+                                        <i class="ri-global-line"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Location -->
+                    </ul>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    `;
 }
 
 // Actualizar el user.avatar
