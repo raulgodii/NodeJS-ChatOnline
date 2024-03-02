@@ -163,19 +163,117 @@ function addMessageToChat(data, user, type = 'msg', self = true) {
                 </div>
             `
             break;
-        case 'file':
+        case 'img':
             message = `
-            <div class="message-content">
-            <h6>Shared file: </6>
-            <div class="shared-image-list row align-items-center g-3">
+            <li class="list-group-item py-4">
+            <div class="row align-items-center gx-4">
+                <!-- Icon -->
+                <div class="col-auto">
+                <div class="shared-image-list row align-items-center g-3">
                 <div class="col">
-                    <a class="shared-image" href="./assets/img/files/${data}">
-                        <img class="img-fluid rounded-2" src="./assets/img/files/${data}" alt="preview" data-action="zoom">
+                    <a class="shared-image" href="./assets/img/files/${data.fileName}">
+                        <img class="img-fluid rounded-2" src="./assets/img/files/${data.fileName}" alt="preview" data-action="zoom">
                     </a>
                 </div>
             </div>
-        </div>
+                </div>
+                <!-- Icon -->
+
+                <!-- Dropdown -->
+                <div class="col-auto">
+                    <div class="dropdown">
+                        <button class="btn btn-icon btn-base btn-sm" type="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="ri-more-fill"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                    href="./assets/img/files/${data.fileName}" download="./assets/img/files/${data.fileName}">Download<i
+                                        class="ri-download-line"></i></a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                    href="#">Share<i class="ri-share-line"></i></a>
+                            </li>
+                            <li>
+                                <div class="dropdown-divider"></div>
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                    href="#">Delete<i
+                                        class="ri-delete-bin-line"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Dropdown -->
+            </div>
+        </li>
             `
+            break;
+        case 'file':
+            message = `
+
+                <li class="list-group-item py-4">
+                    <div class="row align-items-center gx-4">
+                        <!-- Icon -->
+                        <div class="col-auto">
+                            <div class="avatar avatar-sm">
+                                <span class="avatar-label">
+                                    <i class="ri-file-line"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- Icon -->
+
+                        <!-- Text -->
+                        <div class="col overflow-hidden">
+                            <h6 class="text-truncate mb-1">${data.name}</h6>
+                            <ul class="list-inline m-0">
+                                <li class="list-inline-item">
+                                    <p class="text-uppercase text-muted mb-0 fs-6">${data.size}</p>
+                                </li>
+
+                                <li class="list-inline-item">
+                                    <p class="text-uppercase text-muted mb-0 fs-6">${data.extension}</p>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Text -->
+
+                        <!-- Dropdown -->
+                        <div class="col-auto">
+                            <div class="dropdown">
+                                <button class="btn btn-icon btn-base btn-sm" type="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="ri-more-fill"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                            href="./assets/img/files/${data.fileName}" download="./assets/img/files/${data.fileName}">Download<i
+                                                class="ri-download-line"></i></a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                            href="#">Share<i class="ri-share-line"></i></a>
+                                    </li>
+                                    <li>
+                                        <div class="dropdown-divider"></div>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item d-flex align-items-center justify-content-between"
+                                            href="#">Delete<i
+                                                class="ri-delete-bin-line"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Dropdown -->
+                    </div>
+                </li>
+                `
             break;
     }
 
@@ -286,6 +384,67 @@ function generateRandomFileName(file) {
     return `${randomString}_${timestamp}.${fileExtension}`;
 }
 
+// Añdir archivo a lista de archivos del chat
+function addFileToList(file){
+    const fileList = document.getElementById('fileList');
+    fileList.innerHTML += `
+    <!-- File -->
+    <li class="list-group-item py-4">
+        <div class="row align-items-center gx-4">
+            <!-- Icon -->
+            <div class="col-auto">
+                <div class="avatar avatar-sm">
+                    <span class="avatar-label">
+                        <i class="ri-file-line"></i>
+                    </span>
+                </div>
+            </div>
+            <!-- Icon -->
+
+            <!-- Text -->
+            <div class="col overflow-hidden">
+                <h6 class="text-truncate mb-1">${file.name}</h6>
+                <ul class="list-inline m-0">
+                    <li class="list-inline-item">
+                        <p class="text-uppercase text-muted mb-0 fs-6">${file.size}</p>
+                    </li>
+
+                    <li class="list-inline-item">
+                        <p class="text-uppercase text-muted mb-0 fs-6">${file.extension}</p>
+                    </li>
+                </ul>
+            </div>
+            <!-- Text -->
+
+            <!-- Dropdown -->
+            <div class="col-auto">
+                <div class="dropdown">
+                    <button class="btn btn-icon btn-base btn-sm" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="ri-more-fill"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="./assets/img/files/${file.fileName}" download="./assets/img/files/${file.fileName}">Download<i class="ri-download-line"></i></a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Share<i class="ri-share-line"></i></a>
+                        </li>
+                        <li>
+                            <div class="dropdown-divider"></div>
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center justify-content-between" href="#">Delete<i class="ri-delete-bin-line"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Dropdown -->
+        </div>
+    </li>
+    <!-- File -->
+    `;
+}
+
 /** ---|| RECIBIR ||--- */
 // Usuarios conectados
 socket.on('usersConnected', (usersConnected) => {
@@ -385,9 +544,20 @@ socket.on('attachSticker', (stickerSrc, user) => {
     scrollToBottom();
 });
 
+// Recibir imagen
+socket.on('attachImg', (file, user) => {
+    addMessageToChat(file, user, 'img', false);
+
+    addFileToList(file);
+
+    scrollToBottom();
+});
+
 // Recibir archivo
-socket.on('attachFile', (fileName, user) => {
-    addMessageToChat(fileName, user, 'file', false);
+socket.on('attachFile', (file, user) => {
+    addMessageToChat(file, user, 'file', false);
+
+    addFileToList(file);
 
     scrollToBottom();
 });
@@ -447,10 +617,26 @@ function attachFile() {
             body: formData
         })
             .then(data => {
-                addMessageToChat(randomFileName, user, 'file');
-                console.log(data);
-                socket.emit('attachFile', randomFileName, user);
-                scrollToBottom();
+                const fileType = getFileType(file);
+                if (fileType === 'image') {
+                    // Si es una imagen
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        fileUp = getFileDetails(file, randomFileName);
+                        addMessageToChat(fileUp, user, 'img');
+                        addFileToList(fileUp);
+                        scrollToBottom();
+                        socket.emit('attachImg', fileUp, user);
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    // Si es otro tipo de archivo
+                    fileUp = getFileDetails(file, randomFileName);
+                    addMessageToChat(fileUp, user, 'file');
+                    addFileToList(fileUp);
+                    scrollToBottom();
+                    socket.emit('attachFile', fileUp, user);
+                }
             })
             .catch(error => {
                 console.error(error);
@@ -459,6 +645,26 @@ function attachFile() {
         console.log("File upload error");
     }
 }
+
+// Función para obtener el tipo de archivo
+function getFileType(file) {
+    const fileType = file.type.split('/')[0];
+    return fileType;
+}
+
+// Función para obtener detalles del archivo (nombre, extensión y tamaño)
+function getFileDetails(file, randomFileName) {
+    const fileName = file.name;
+    const fileExtension = fileName.split('.').pop();
+    const fileSize = (file.size / 1024).toFixed(2) + 'KB';
+    return {
+        name: fileName,
+        extension: fileExtension.toUpperCase(),
+        size: fileSize,
+        fileName: randomFileName
+    };
+}
+
 
 // Enviar escribiendo
 function writing() {
